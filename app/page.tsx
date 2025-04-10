@@ -9,7 +9,7 @@ export default function Home() {
         {/* Profile Section */}
         <div className="flex flex-col">
           {/* Info Card with Profile Image - Now with sticky positioning */}
-          <div className="flex flex-col bg-white dark:bg-zinc-900 rounded-xl p-8 shadow-xl border border-gray-200 dark:border-zinc-800 transition-transform duration-300 hover:scale-105 sticky top-24">
+          <div className="flex flex-col bg-white dark:bg-zinc-900 rounded-xl p-8 shadow-xl border border-gray-200 dark:border-zinc-800 transition-transform duration-300 hover:scale-105 sticky top-28">
             {/* Profile Image - Optimized with fetchpriority="high" for LCP improvement */}
             <div className="relative w-40 h-40 rounded-full overflow-hidden mx-auto mb-8 border-4 border-purple-500/20">
               <ResponsiveImage
@@ -333,4 +333,3 @@ export default function Home() {
     </div>
   )
 }
-

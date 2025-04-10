@@ -9,7 +9,7 @@ export default function Resume() {
       </h1>
       <div className="grid md:grid-cols-3 gap-8">
         <div className="md:col-span-1">
-          <div className="bg-white dark:bg-zinc-800/50 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 transition-transform duration-300 hover:scale-105 sticky top-24">
+          <div className="bg-white dark:bg-zinc-800/50 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 transition-transform duration-300 hover:scale-105 sticky top-28">
             <ResponsiveImage
               src="/jca.avif"
               alt="Johncarlo Ababa"
@@ -180,7 +180,9 @@ export default function Resume() {
           <h2 className="text-2xl font-bold mt-8 mb-4 heading-special text-pink-400">Virtual Assistant Work</h2>
           <div className="bg-white dark:bg-zinc-800/50 p-6 rounded-lg shadow-md border border-gray-200 dark:border-zinc-700 space-y-4 transition-transform duration-300 hover:scale-105">
             <div>
-              <h3 className="text-lg font-semibold">Social Media Content Repurposing (Splitflask & Lollipop Brushes)</h3>
+              <h3 className="text-lg font-semibold">
+                Social Media Content Repurposing (Splitflask & Lollipop Brushes)
+              </h3>
               <p className="text-muted-foreground">Video Content Distribution & Cross-Platform Uploads (2025)</p>
             </div>
             <div>
