@@ -11,13 +11,6 @@ export default function Portfolio() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
   const [selectedProject, setSelectedProject] = useState<number | null>(null)
 
-  const categories = [
-    { id: "graphic design", name: "Graphic Design", icon: Paintbrush },
-    { id: "development", name: "Development", icon: Code },
-    { id: "photography", name: "Photography", icon: Camera },
-    { id: "va training", name: "VA Training", icon: PencilRuler },
-  ]
-
   // Add the new button link properties to each project
   const projects = [
     {
@@ -278,6 +271,17 @@ export default function Portfolio() {
       fourthbuttonlink: "",
     },
   ]
+
+  // Update the categories array to only include categories that have at least one visible project
+  const categories = [
+    { id: "graphic design", name: "Graphic Design", icon: Paintbrush },
+    { id: "development", name: "Development", icon: Code },
+    { id: "photography", name: "Photography", icon: Camera },
+    { id: "va training", name: "VA Training", icon: PencilRuler },
+  ].filter((category) => {
+    // Only include this category if there's at least one visible project with this category
+    return projects.some((project) => project.category === category.id && project.show)
+  })
 
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   // Modified filtering logic to only show projects where show is true
