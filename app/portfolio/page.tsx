@@ -155,7 +155,7 @@ export default function Portfolio() {
       link: "/static-ad-designs",
       github: "",
       technologies: ["Adobe Photoshop", "Figma", "Canva", "Graphic Design", "Photo Manipulation"],
-      show: true,
+      show: false,
       firstbutton: "View Designs",
       secbutton: "",
       thirdbutton: "",

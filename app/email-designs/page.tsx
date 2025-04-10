@@ -50,7 +50,7 @@ export default function EmailDesigns() {
     {
       id: 1,
       title: "JCABABA.ME Website",
-      description: "Website launch showcase",
+      description: "Website",
       src: "/jcababame.png?height=7185&width=1200&text=BMW+M4CSL",
       thumbnail: "/jcababamethumbnail.png", // New thumbnail property
       show: true,
@@ -64,7 +64,7 @@ export default function EmailDesigns() {
     {
       id: 2,
       title: "BMW M4 CSL",
-      description: "Product showcase",
+      description: "Product",
       src: "/m4highlight.png?height=7185&width=1200&text=BMW+M4CSL",
       thumbnail: "/m4thumbnail.png", // New thumbnail property
       show: true,
@@ -77,8 +77,8 @@ export default function EmailDesigns() {
     },
     {
       id: 3,
-      title: "Abandoned BMW M4",
-      description: "Follow-up email",
+      title: "BMW M4 Abandoned",
+      description: "Follow-up",
       src: "/m4abandoned.png?height=5982&width=1200&text=Product+Announcement",
       thumbnail: "/m4abandonedthumbnail.png", // New thumbnail property
       show: true,
@@ -92,7 +92,7 @@ export default function EmailDesigns() {
     {
       id: 4,
       title: "Lollipop Brushes",
-      description: "Promotional campaign",
+      description: "Promotional",
       src: "/lollipopbrushes.png?height=6250&width=1200&text=Event+Invitation",
       thumbnail: "/lollipopbrushesthumbnail.png", // New thumbnail property
       show: true,
@@ -106,7 +106,7 @@ export default function EmailDesigns() {
     {
       id: 5,
       title: "Shea Terra Organics",
-      description: "Promotional campaign",
+      description: "Promotional",
       src: "/SheaTerra.png?height=6250&width=1200&text=Welcome+Email",
       thumbnail: "/SheaTerrathumbnail.png", // New thumbnail property
       show: true,
@@ -120,7 +120,7 @@ export default function EmailDesigns() {
     {
       id: 6,
       title: "Lollipop Brushes",
-      description: "Promotional campaign",
+      description: "Promotional",
       src: "/lollipopbrushesv2.png?height=5130&width=1200&text=Promotional+Campaign",
       thumbnail: "/lollipopbrushesv2th.png", // New thumbnail property
       show: true,
@@ -134,7 +134,7 @@ export default function EmailDesigns() {
     {
       id: 7,
       title: "Splitflask Tumbler",
-      description: "Welcome email",
+      description: "Welcome",
       src: "/Splitflask.png?height=7197&width=1200&text=Welcome+Email",
       thumbnail: "/Splitflaskth.png", // New thumbnail property
       show: true,
@@ -161,31 +161,31 @@ export default function EmailDesigns() {
     },
     {
       id: 9,
-      title: "Email Design 8",
-      description: "Transactional email template",
-      src: "/placeholder.svg?height=1600&width=1200&text=Transactional+Email",
-      thumbnail: "/placeholder.svg?height=400&width=300&text=Transactional+Email", // New thumbnail property
-      show: false,
-      brand: "Generic Brand",
+      title: "Hilqo",
+      description: "Promotional",
+      src: "/hilqoreviews.png?height=4777&width=1200&text=Promotional+Email",
+      thumbnail: "/hilqoreviewsth.png", // New thumbnail property
+      show: true,
+      brand: "Hilqo",
       context:
-        "This transactional email template provides clear order information while maintaining brand identity, ensuring customers feel confident about their purchase.",
-      year: "2024",
-      tools: ["Figma"],
-      type: "Transactional Email",
+        "This promotional email template provides clear order information while maintaining brand identity, ensuring customers feel confident about the product.",
+      year: "2025",
+      tools: ["Figma", "Canva"],
+      type: "Promotional Email",
     },
     {
       id: 10,
-      title: "Email Design 9",
-      description: "Welcome series template",
-      src: "/placeholder.svg?height=1600&width=1200&text=Welcome+Series",
-      thumbnail: "/placeholder.svg?height=400&width=300&text=Welcome+Series", // New thumbnail property
-      show: false,
-      brand: "Generic Brand",
+      title: "Hilqo",
+      description: "Discount campaign",
+      src: "/hilqodiscounts.png?height=5295&width=1200&text=Promotional+Email",
+      thumbnail: "/hilqodiscountsth.png", // New thumbnail property
+      show: true,
+      brand: "Hilqo",
       context:
-        "This welcome series email introduces new subscribers to the brand with a clean, approachable design that encourages further engagement.",
-      year: "2024",
-      tools: ["Figma", "Photoshop"],
-      type: "Welcome Series Email",
+        "This discount email introduces new discount to the brand with a clean, approachable design that encourages users to buy more.",
+      year: "2025",
+      tools: ["Figma", "Canva"],
+      type: "Promotional Email",
     },
   ]
 
