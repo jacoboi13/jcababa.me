@@ -18,6 +18,7 @@ import { usePathname } from "next/navigation"
 import ImageOptimizer from "./components/image-optimizer"
 import PerformanceOptimization from "./components/performance-optimization"
 import CssOptimizer from "./components/css-optimizer"
+import { VercelAnalytics } from "./components/analytics"
 
 // Font for the logo
 const oswald = Oswald({
@@ -227,9 +228,9 @@ export default function ClientLayout({
               </div>
             </div>
           </footer>
+          <VercelAnalytics />
         </ThemeProvider>
       </body>
     </html>
   )
 }
-
