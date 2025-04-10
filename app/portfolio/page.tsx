@@ -138,9 +138,9 @@ export default function Portfolio() {
     },
     {
       id: 5,
-      title: "Adobe Photoshop Designing",
+      title: "Static Ad Designing",
       category: "graphic design",
-      description: "Various design projects",
+      description: "Various ad design projects",
       image: "/placeholder.svg?height=300&width=400",
       secimage: "",
       thirdimage: "",
@@ -151,17 +151,17 @@ export default function Portfolio() {
       eighthimage: "",
       ninthimage: "",
       tenthimage: "",
-      year: "2020",
-      link: "#",
-      github: "https://github.com",
-      technologies: ["Adobe Photoshop", "Digital Art", "Photo Manipulation", "Graphic Design"],
-      show: false,
-      firstbutton: "View Gallery",
+      year: "2025",
+      link: "/static-ad-designs",
+      github: "",
+      technologies: ["Adobe Photoshop", "Figma", "Canva", "Graphic Design", "Photo Manipulation"],
+      show: true,
+      firstbutton: "View Designs",
       secbutton: "",
       thirdbutton: "",
       fourthbutton: "",
-      firstbuttonlink: "#",
-      secbuttonlink: "https://github.com",
+      firstbuttonlink: "/static-ad-designs",
+      secbuttonlink: "",
       thirdbuttonlink: "",
       fourthbuttonlink: "",
     },
@@ -407,4 +407,3 @@ export default function Portfolio() {
     </>
   )
 }
-

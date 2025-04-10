@@ -13,14 +13,14 @@ import {
   Palette,
   Calendar,
   Wrench,
-  Mail,
-  ShoppingBag,
-  ShoppingCart,
-  Megaphone,
+  Share2,
+  Globe,
   Newspaper,
+  Mountain,
+  Package,
 } from "lucide-react"
 
-export default function EmailDesigns() {
+export default function StaticAdDesigns() {
   // State for tracking which image is being viewed in the modal
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   // State for zoom level - adjusted for better visibility
@@ -28,6 +28,7 @@ export default function EmailDesigns() {
   // State for security warning
   const [showSecurityWarning, setShowSecurityWarning] = useState(false)
   // Ref for the container
+  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   // Ref for the image container
   const imageContainerRef = useRef<HTMLDivElement>(null)
@@ -35,192 +36,10 @@ export default function EmailDesigns() {
   const [isMobile, setIsMobile] = useState(false)
   // State to track if image is loaded
   const [imageLoaded, setImageLoaded] = useState(false)
-
-  // Add this new state near the other state declarations
-  const [mobileCardIndex, setMobileCardIndex] = useState(0)
-
-  // Add state for category filtering near the other state declarations
+  // State for category filtering
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
-
-  // Add the hoveredCategory state near the other state declarations
-  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null)
-
-  // Replace the emailDesigns array with this updated version that includes 9 items with show property
-  const emailDesigns = [
-    {
-      id: 1,
-      title: "JCABABA.ME Website",
-      description: "Website launch showcase",
-      src: "/jcababame.png?height=7185&width=1200&text=BMW+M4CSL",
-      thumbnail: "/jcababamethumbnail.png", // New thumbnail property
-      show: true,
-      brand: "JCABABA.ME",
-      context:
-        "This website showcases my work with a sleek, ultra-lightweight design, built for speed, performance, and interactivity.",
-      year: "2025",
-      tools: ["Figma", "Canva", "Photoshop"],
-      type: "Website Launch Email",
-    },
-    {
-      id: 2,
-      title: "BMW M4 CSL",
-      description: "Product showcase",
-      src: "/m4highlight.png?height=7185&width=1200&text=BMW+M4CSL",
-      thumbnail: "/m4thumbnail.png", // New thumbnail property
-      show: true,
-      brand: "BMW",
-      context:
-        "This email campaign concept focuses on luxury automotive promotion with a sleek, modern layout that highlights the performance features of the BMW M4 CSL.",
-      year: "2024",
-      tools: ["Figma", "Photoshop"],
-      type: "Product Launch Email",
-    },
-    {
-      id: 3,
-      title: "Abandoned BMW M4",
-      description: "Follow-up email",
-      src: "/m4abandoned.png?height=5982&width=1200&text=Product+Announcement",
-      thumbnail: "/m4abandonedthumbnail.png", // New thumbnail property
-      show: true,
-      brand: "BMW",
-      context:
-        "This abandoned cart email design uses dramatic imagery and minimalist typography to create urgency and reconnect potential customers with the BMW M4 they were considering.",
-      year: "2024",
-      tools: ["Figma", "Photoshop"],
-      type: "Abandoned Cart Recovery Email",
-    },
-    {
-      id: 4,
-      title: "Lollipop Brushes",
-      description: "Promotional campaign",
-      src: "/lollipopbrushes.png?height=6250&width=1200&text=Event+Invitation",
-      thumbnail: "/lollipopbrushesthumbnail.png", // New thumbnail property
-      show: true,
-      brand: "Lollipop Brushes",
-      context:
-        "This vibrant promotional email for Lollipop Brushes uses playful colors and clean product photography to showcase the makeup brush collection in an engaging, visually appealing way.",
-      year: "2024",
-      tools: ["Figma", "Canva", "Photoshop"],
-      type: "Promotional Email",
-    },
-    {
-      id: 5,
-      title: "Shea Terra Organics",
-      description: "Promotional campaign",
-      src: "/SheaTerra.png?height=6250&width=1200&text=Welcome+Email",
-      thumbnail: "/SheaTerrathumbnail.png", // New thumbnail property
-      show: true,
-      brand: "Shea Terra Organics",
-      context:
-        "This Shea Terra promotional email emphasizes natural ingredients and sustainability through earthy tones and organic imagery, connecting customers with the brand's eco-friendly values.",
-      year: "2024",
-      tools: ["Figma", "Canva"],
-      type: "Welcome Email",
-    },
-    {
-      id: 6,
-      title: "Lollipop Brushes",
-      description: "Promotional campaign",
-      src: "/lollipopbrushesv2.png?height=5130&width=1200&text=Promotional+Campaign",
-      thumbnail: "/lollipopbrushesv2th.png", // New thumbnail property
-      show: true,
-      brand: "Lollipop Brushes",
-      context:
-        "This promotional campaign template uses a balanced layout with strong visual hierarchy to guide readers through product offerings and special deals.",
-      year: "2024",
-      tools: ["Figma", "Canva", "Photoshop"],
-      type: "Promotional Email",
-    },
-    {
-      id: 7,
-      title: "Splitflask Tumbler",
-      description: "Welcome email",
-      src: "/Splitflask.png?height=7197&width=1200&text=Welcome+Email",
-      thumbnail: "/Splitflaskth.png", // New thumbnail property
-      show: true,
-      brand: "Splitflask",
-      context:
-        "This welcome email template creates a sense of importance for customer who recently purchased this beautiful tumbler, perfect for customers who don't know anything about this brand.",
-      year: "2024",
-      tools: ["Figma", "Canva", "Photoshop"],
-      type: "Welcome Email",
-    },
-    {
-      id: 8,
-      title: "Pinkbike",
-      description: "Newsletter",
-      src: "/pb.png?height=4370&width=1200&text=Newsletter",
-      thumbnail: "/pbth.png", // New thumbnail property
-      show: true,
-      brand: "Pinkbike",
-      context:
-        "This newsletter template balances content blocks with imagery to create an engaging reading experience that keeps subscribers informed about brand updates.",
-      year: "2024",
-      tools: ["Figma", "Canva", "Photoshop"],
-      type: "Newsletter Email",
-    },
-    {
-      id: 9,
-      title: "Email Design 8",
-      description: "Transactional email template",
-      src: "/placeholder.svg?height=1600&width=1200&text=Transactional+Email",
-      thumbnail: "/placeholder.svg?height=400&width=300&text=Transactional+Email", // New thumbnail property
-      show: false,
-      brand: "Generic Brand",
-      context:
-        "This transactional email template provides clear order information while maintaining brand identity, ensuring customers feel confident about their purchase.",
-      year: "2024",
-      tools: ["Figma"],
-      type: "Transactional Email",
-    },
-    {
-      id: 10,
-      title: "Email Design 9",
-      description: "Welcome series template",
-      src: "/placeholder.svg?height=1600&width=1200&text=Welcome+Series",
-      thumbnail: "/placeholder.svg?height=400&width=300&text=Welcome+Series", // New thumbnail property
-      show: false,
-      brand: "Generic Brand",
-      context:
-        "This welcome series email introduces new subscribers to the brand with a clean, approachable design that encourages further engagement.",
-      year: "2024",
-      tools: ["Figma", "Photoshop"],
-      type: "Welcome Series Email",
-    },
-  ]
-
-  // Add a function to get the appropriate icon for each category type
-  // Add this function after the emailDesigns array and before getUniqueCategories
-  const getCategoryIcon = (category: string) => {
-    switch (category) {
-      case "Website Launch Email":
-        return Mail
-      case "Product Launch Email":
-        return ShoppingBag
-      case "Abandoned Cart Recovery Email":
-        return ShoppingCart
-      case "Promotional Email":
-        return Megaphone
-      case "Welcome Email":
-        return Mail
-      case "Newsletter Email":
-        return Newspaper
-      default:
-        return Mail
-    }
-  }
-
-  // Function to extract unique categories from the emailDesigns array
-  const getUniqueCategories = () => {
-    const categories = emailDesigns
-      .filter((design) => design.show)
-      .map((design) => design.type)
-      .filter((value, index, self) => self.indexOf(value) === index)
-    return categories
-  }
-
-  // Add this right after the existing state declarations
-  const categories = getUniqueCategories()
+  // State to track mobile card index
+  const [mobileCardIndex, setMobileCardIndex] = useState(0)
 
   // Check if we're on mobile
   useEffect(() => {
@@ -260,6 +79,121 @@ export default function EmailDesigns() {
     setImageLoaded(false)
   }, [isMobile, selectedImage]) // Reset zoom when image changes or when screen size changes
 
+  // Static ad designs with categories
+  const staticAdDesigns = [
+    {
+      id: 1,
+      title: "Social Media Banner",
+      description: "Facebook cover image",
+      src: "/placeholder.svg?height=1600&width=1200&text=Social+Media+Banner",
+      thumbnail: "/placeholder.svg?height=400&width=300&text=Social+Media+Banner",
+      show: true,
+      brand: "Example Brand",
+      context:
+        "This social media banner is designed for Facebook cover images with a focus on brand visibility and campaign messaging.",
+      year: "2025",
+      tools: ["Photoshop", "Canva"],
+      type: "Social Media",
+    },
+    {
+      id: 2,
+      title: "Instagram Post",
+      description: "Square format post",
+      src: "/placeholder.svg?height=1600&width=1200&text=Instagram+Post",
+      thumbnail: "/placeholder.svg?height=400&width=300&text=Instagram+Post",
+      show: true,
+      brand: "Example Brand",
+      context:
+        "This Instagram post uses a square format with vibrant colors and clear messaging to stand out in users' feeds.",
+      year: "2025",
+      tools: ["Photoshop", "Canva"],
+      type: "Social Media",
+    },
+    {
+      id: 3,
+      title: "Web Banner",
+      description: "Responsive banner ad",
+      src: "/placeholder.svg?height=1600&width=1200&text=Web+Banner",
+      thumbnail: "/placeholder.svg?height=400&width=300&text=Web+Banner",
+      show: true,
+      brand: "Example Brand",
+      context:
+        "This web banner is designed to be responsive across different devices while maintaining visual appeal and clear call-to-action.",
+      year: "2025",
+      tools: ["Photoshop", "Figma"],
+      type: "Web Advertising",
+    },
+    {
+      id: 4,
+      title: "Print Advertisement",
+      description: "Magazine full-page ad",
+      src: "/placeholder.svg?height=1600&width=1200&text=Print+Advertisement",
+      thumbnail: "/placeholder.svg?height=400&width=300&text=Print+Advertisement",
+      show: true,
+      brand: "Example Brand",
+      context:
+        "This print advertisement is designed for magazine placement with high-resolution imagery and compelling copy.",
+      year: "2025",
+      tools: ["InDesign", "Photoshop"],
+      type: "Print",
+    },
+    {
+      id: 5,
+      title: "Billboard Design",
+      description: "Outdoor advertising",
+      src: "/placeholder.svg?height=1600&width=1200&text=Billboard+Design",
+      thumbnail: "/placeholder.svg?height=400&width=300&text=Billboard+Design",
+      show: true,
+      brand: "Example Brand",
+      context: "This billboard design uses large typography and simple imagery for maximum impact at a distance.",
+      year: "2025",
+      tools: ["Photoshop", "Illustrator"],
+      type: "Outdoor",
+    },
+    {
+      id: 6,
+      title: "Product Packaging",
+      description: "Retail packaging design",
+      src: "/placeholder.svg?height=1600&width=1200&text=Product+Packaging",
+      thumbnail: "/placeholder.svg?height=400&width=300&text=Product+Packaging",
+      show: true,
+      brand: "Example Brand",
+      context: "This product packaging design balances brand identity with practical information and shelf appeal.",
+      year: "2025",
+      tools: ["Illustrator", "Photoshop"],
+      type: "Packaging",
+    },
+  ]
+
+  // Add this function after the staticAdDesigns array and before getUniqueCategories
+  const getCategoryIcon = (category: string) => {
+    switch (category) {
+      case "Social Media":
+        return Share2
+      case "Web Advertising":
+        return Globe
+      case "Print":
+        return Newspaper
+      case "Outdoor":
+        return Mountain
+      case "Packaging":
+        return Package
+      default:
+        return Palette
+    }
+  }
+
+  // Function to get unique categories
+  const getUniqueCategories = () => {
+    const categories = staticAdDesigns
+      .filter((design) => design.show)
+      .map((design) => design.type)
+      .filter((value, index, self) => self.indexOf(value) === index)
+    return categories
+  }
+
+  const categories = getUniqueCategories()
+
   // Function to handle zoom in with limits
   const handleZoomIn = () => {
     setZoomLevel((prev) => {
@@ -281,7 +215,7 @@ export default function EmailDesigns() {
   }
 
   // Get the current design
-  const currentDesign = selectedImage ? emailDesigns.find((d) => d.id === selectedImage) : null
+  const currentDesign = selectedImage ? staticAdDesigns.find((d) => d.id === selectedImage) : null
 
   // Enhanced security measures
   useEffect(() => {
@@ -337,14 +271,14 @@ export default function EmailDesigns() {
     }
   }, [])
 
-  // Add this filtering logic before the return statement
-  const filteredEmailDesigns = activeCategory
-    ? emailDesigns.filter((design) => design.show && design.type === activeCategory)
-    : emailDesigns.filter((design) => design.show)
+  // Filter designs based on active category
+  const filteredStaticAdDesigns = activeCategory
+    ? staticAdDesigns.filter((design) => design.show && design.type === activeCategory)
+    : staticAdDesigns.filter((design) => design.show)
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-12" ref={containerRef}>
-      <h1 className="text-3xl font-bold text-center mb-4 text-purple-600 heading-special">Email Designs</h1>
+      <h1 className="text-3xl font-bold text-center mb-4 text-purple-600 heading-special">Static Ad Designs</h1>
 
       {/* Security notice */}
       <div className="mb-8 p-4 bg-pink-500/10 border border-pink-500/20 rounded-lg">
@@ -355,7 +289,7 @@ export default function EmailDesigns() {
         </p>
       </div>
 
-      {/* Add the category buttons right after the security notice div and before the grid */}
+      {/* Category filtering */}
       <div className="flex flex-wrap justify-center gap-4 mb-8">
         <button
           onClick={() => setActiveCategory(null)}
@@ -374,8 +308,8 @@ export default function EmailDesigns() {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              onMouseEnter={() => setHoveredCategory && setHoveredCategory(category)}
-              onMouseLeave={() => setHoveredCategory && setHoveredCategory(null)}
+              onMouseEnter={() => setHoveredCategory(category)}
+              onMouseLeave={() => setHoveredCategory(null)}
               className={`px-6 py-3 rounded-full flex items-center gap-2 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/50 ${
                 activeCategory === category
                   ? "bg-pink-500 text-black font-medium"
@@ -395,9 +329,9 @@ export default function EmailDesigns() {
         })}
       </div>
 
-      {/* Then replace the mapping in the grid with this: */}
+      {/* Design grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredEmailDesigns.map((design) => (
+        {filteredStaticAdDesigns.map((design) => (
           <div
             key={design.id}
             className="bg-white dark:bg-zinc-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-zinc-800 cursor-pointer transform hover:scale-[1.02] group"
@@ -597,7 +531,7 @@ export default function EmailDesigns() {
                 </button>
               </div>
 
-              {/* Image container with scroll - COMPLETELY REDESIGNED */}
+              {/* Image container with scroll */}
               <div
                 ref={imageContainerRef}
                 className={`${isMobile ? "w-full pt-4" : "w-[calc(100%-320px)] pt-4"} h-full overflow-auto custom-scrollbar select-none`}
@@ -620,8 +554,8 @@ export default function EmailDesigns() {
                     }}
                   >
                     <img
-                      src={emailDesigns.find((d) => d.id === selectedImage)?.src || ""}
-                      alt={`${emailDesigns.find((d) => d.id === selectedImage)?.title}`}
+                      src={staticAdDesigns.find((d) => d.id === selectedImage)?.src || ""}
+                      alt={`${staticAdDesigns.find((d) => d.id === selectedImage)?.title}`}
                       className="select-none"
                       draggable="false"
                       onContextMenu={(e) => e.preventDefault()}
@@ -643,7 +577,7 @@ export default function EmailDesigns() {
                 )}
               </div>
 
-              {/* Desktop view: Sticky info cards on the right - adjusted size */}
+              {/* Desktop view: Sticky info cards on the right */}
               {!isMobile && currentDesign && (
                 <div className="hidden md:block w-[320px] h-full relative">
                   <div className="absolute top-0 right-0 w-[300px] space-y-4 p-4 max-h-full overflow-y-auto custom-scrollbar">
