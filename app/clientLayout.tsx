@@ -193,7 +193,7 @@ export default function ClientLayout({
                   </svg>
                 </SocialIcon>
                 <SocialIcon
-                  href="https://wa.me/639955264668"
+                  href="https://wa.me/639397811597"
                   label="WhatsApp"
                   aria-label="Message me tru WhatsApp"
                   target="_blank"
