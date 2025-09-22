@@ -27,8 +27,8 @@ export default function Resume() {
             </p>
             <div className="flex flex-col space-y-2">
               <a
-                href="/Jc_Ababa_Resume_&_Portfolio_2025.pdf"
-                download="Jc_Ababa_Resume_&_Portfolio_2025.pdf"
+                href="/JC_Ababa_Graphic_Designer_Resume_Portfolio_2025.pdf"
+                download="JC_Ababa_Graphic_Designer_Resume_Portfolio_2025.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block px-4 py-2 bg-[#000000] text-white rounded-full font-medium text-center transition-all duration-300 hover:bg-white hover:shadow-lg hover:shadow-pink-500/50"
