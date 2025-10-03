@@ -159,6 +159,12 @@ export default function PortfolioPage() {
     window.location.href = "mailto:jcababa.sn0w@gmail.com"
   }
 
+  const handleHireMe = () => {
+    const subject = encodeURIComponent("I want you to design our email campaigns")
+    const body = encodeURIComponent("Hi Johncarlo, I want you to help us design our upcoming email campaign...")
+    window.location.href = `mailto:jcababa.sn0w@gmail.com?subject=${subject}&body=${body}`
+  }
+
   return (
     <div className="h-screen overflow-y-auto snap-y snap-mandatory select-none relative">
       <div className="fixed inset-0 z-0">
@@ -253,7 +259,7 @@ export default function PortfolioPage() {
                     </svg>
                   </a>
                   <a
-                    href="https://discord.com/users/yourusername"
+                    href="https://discord.com/users/jcababasn0w506"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 ${borderColor} flex items-center justify-center hover:bg-[#a78bfa] hover:border-[#a78bfa] transition-all duration-300 hover:scale-110 group`}
@@ -268,7 +274,7 @@ export default function PortfolioPage() {
                     </svg>
                   </a>
                   <a
-                    href="https://t.me/yourusername"
+                    href="https://t.me/itsmejesseme"
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 ${borderColor} flex items-center justify-center hover:bg-[#a78bfa] hover:border-[#a78bfa] transition-all duration-300 hover:scale-110 group`}
@@ -285,15 +291,24 @@ export default function PortfolioPage() {
                 </div>
 
                 {/* Button */}
-                <InteractiveHoverButton
-                  text="View Resume and Portfolio"
-                  icon="arrow"
-                  variant="outline"
-                  className="w-full"
-                  href="https://www.jcababa.me/JC_Ababa_EmailGraphicDesigner_Resume_&_Portfolio_2025.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                />
+                <div className="flex flex-col gap-3">
+                  <InteractiveHoverButton
+                    text="View Resume and Portfolio"
+                    icon="arrow"
+                    variant="outline"
+                    className="w-full"
+                    href="https://www.jcababa.me/JC_Ababa_EmailGraphicDesigner_Resume_&_Portfolio_2025.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  />
+                  <InteractiveHoverButton
+                    text="Hire Me"
+                    icon="arrow"
+                    variant="outline"
+                    className="w-full"
+                    onClick={handleHireMe}
+                  />
+                </div>
               </FrostedCard>
 
               {/* Metrics Card */}
