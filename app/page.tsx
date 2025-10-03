@@ -1,359 +1,339 @@
-import Link from "next/link"
-import { Mail, Phone, Calendar, MapPin, Facebook, Instagram, TwitterIcon as BrandTwitter } from "lucide-react"
-import { ResponsiveImage } from "./components/responsive-image"
+"use client"
 
-export default function Home() {
+import { useEffect, useRef, useState } from "react"
+import { Linkedin } from "lucide-react"
+import { NavBar } from "@/components/nav-bar"
+import { InteractiveHoverButton } from "@/components/interactive-hover-button"
+import { FrostedCard } from "@/components/frosted-card"
+import Prism from "@/components/prism"
+
+export default function PortfolioPage() {
+  const sectionsRef = useRef<HTMLDivElement[]>([])
+  const [currentSection, setCurrentSection] = useState(0)
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "-45% 0px -45% 0px",
+      threshold: 0.1,
+    }
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = sectionsRef.current.indexOf(entry.target as HTMLDivElement)
+          if (index !== -1) {
+            setCurrentSection(index)
+          }
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions)
+
+    sectionsRef.current.forEach((section) => {
+      if (section) observer.observe(section)
+    })
+
+    return () => {
+      sectionsRef.current.forEach((section) => {
+        if (section) observer.unobserve(section)
+      })
+    }
+  }, [])
+
+  const scrollToSection = (index: number) => {
+    sectionsRef.current[index]?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  const textPrimary = "text-white"
+  const textSecondary = "text-gray-200"
+  const textTertiary = "text-gray-100"
+  const borderColor = "border-gray-400"
+  const borderColorAlt = "border-gray-500"
+
+  const brandLogos = [
+    { name: "Brand 1", logo: "/generic-brand-logo-1.png" },
+    { name: "Brand 2", logo: "/generic-brand-logo-2.png" },
+    { name: "Brand 3", logo: "/brand-logo-3.png" },
+    { name: "Brand 4", logo: "/brand-logo-4.png" },
+    { name: "Brand 5", logo: "/brand-logo-5.png" },
+    { name: "Brand 6", logo: "/brand-logo-6.png" },
+    { name: "Brand 7", logo: "/brand-logo-7.png" },
+    { name: "Brand 8", logo: "/brand-logo-8.jpg" },
+  ]
+
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
-      <div className="grid md:grid-cols-3 gap-8">
-        {/* Profile Section */}
-        <div className="flex flex-col">
-          {/* Info Card with Profile Image - Now with sticky positioning */}
-          <div className="flex flex-col bg-white dark:bg-zinc-900 rounded-xl p-8 shadow-xl border border-gray-200 dark:border-zinc-800 transition-transform duration-300 hover:scale-105 sticky top-28">
-            {/* Profile Image - Optimized with fetchpriority="high" for LCP improvement */}
-            <div className="relative w-40 h-40 rounded-full overflow-hidden mx-auto mb-8 border-4 border-purple-500/20">
-              <ResponsiveImage
-                src="/jc.avif"
-                alt="Profile"
-                width={160}
-                height={160}
-                className="object-cover"
-                priority
-                sizes="160px"
-                quality={90}
-                fetchpriority="high"
-              />
-            </div>
+    <div className="h-screen overflow-y-auto snap-y snap-mandatory select-none relative">
+      <div className="fixed inset-0 z-0">
+        <Prism
+          height={3.5}
+          baseWidth={5.5}
+          animationType="rotate"
+          glow={1}
+          offset={{ x: 0, y: 0 }}
+          noise={0.5}
+          transparent={true}
+          scale={3.6}
+          hueShift={0}
+          colorFrequency={1}
+          hoverStrength={2}
+          inertia={0.05}
+          bloom={1}
+          suspendWhenOffscreen={false}
+          timeScale={0.5}
+        />
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
 
-            {/* Name and Title with more spacing */}
-            <div className="text-center mb-8">
-              <div className="flex items-center justify-center mb-4">
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Johncarlo Ababa</h1>
-                <div className="ml-1 flex-shrink-0 relative group">
-                  <svg
-                    className="w-5 h-5 drop-shadow-[0_0_3px_rgba(29,161,242,0.5)] transition-transform duration-300 group-hover:scale-110"
-                    viewBox="0 0 512 512"
-                    xmlns="http://www.w3.org/2000/svg"
+      <NavBar activeSection={currentSection} onNavigate={scrollToSection} />
+
+      {/* Hero Section */}
+      <section
+        ref={(el) => {
+          if (el) sectionsRef.current[0] = el
+        }}
+        className="min-h-screen relative overflow-hidden snap-start"
+      >
+        {/* Main Content */}
+        <div className="relative z-10 h-full flex items-center px-4 sm:px-8 md:px-12 lg:px-16 pt-32 sm:pt-36 md:pt-40 lg:pt-44 xl:pt-36 pb-16 sm:pb-20 md:pb-24">
+          <div className="flex flex-col-reverse md:flex-row items-center justify-between w-full max-w-[1400px] mx-auto gap-8 md:gap-12 lg:gap-16">
+            {/* Left Content */}
+            <div className="flex-1 w-full">
+              <FrostedCard className="mb-10 sm:mb-12 md:mb-16 transition-transform duration-300 hover:scale-105">
+                <p className={`${textSecondary} text-xs sm:text-sm md:text-base lg:text-lg mb-2`}>Hi I am</p>
+                <h1 className={`${textPrimary} text-lg sm:text-xl md:text-2xl lg:text-3xl mb-3 sm:mb-4 font-bold`}>
+                  Johncarlo Ababa
+                </h1>
+                <h2 className="text-[#a78bfa] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight mb-8 sm:mb-10">
+                  Email Graphics
+                  <br />
+                  Designer
+                </h2>
+
+                {/* Social Icons */}
+                <div className="flex gap-3 sm:gap-4 mb-8 sm:mb-10">
+                  <a
+                    href="#"
+                    className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 ${borderColor} flex items-center justify-center hover:bg-[#a78bfa] hover:border-[#a78bfa] transition-all duration-300 hover:scale-110 group`}
                   >
-                    <path
-                      fill="#1DA1F2"
-                      d="M512 268c0 17.9-4.3 34.5-12.9 49.7s-20.1 27.1-34.6 35.4c.4 2.7.6 6.9.6 12.6 0 27.1-9.1 50.1-27.1 69.1-18.1 19.1-39.9 28.6-65.4 28.6-11.4 0-22.3-2.1-32.6-6.3-8 16.4-19.5 29.6-34.6 39.7-15 10.2-31.5 15.2-49.4 15.2-18.3 0-34.9-4.9-49.7-14.9-14.9-9.9-26.3-23.2-34.3-40-10.3 4.2-21.1 6.3-32.6 6.3-25.5 0-47.4-9.5-65.7-28.6-18.3-19-27.4-42.1-27.4-69.1 0-3 .4-7.2 1.1-12.6-14.5-8.4-26-20.2-34.6-35.4C4.3 302.5 0 285.9 0 268c0-19 4.8-36.5 14.3-52.3 9.5-15.8 22.3-27.5 38.3-35.1-4.2-11.4-6.3-22.9-6.3-34.3 0-27 9.1-50.1 27.4-69.1 18.3-19 40.2-28.6 65.7-28.6 11.4 0 22.3 2.1 32.6 6.3 8-16.4 19.5-29.6 34.6-39.7C221.6 5.1 238.1 0 256 0c17.9 0 34.4 5.1 49.4 15.1 15 10.1 26.6 23.3 34.6 39.7 10.3-4.2 21.1-6.3 32.6-6.3 25.5 0 47.3 9.5 65.4 28.6 18.1 19.1 27.1 42.1 27.1 69.1 0 12.6-1.9 24-5.7 34.3 16 7.6 28.8 19.3 38.3 35.1C507.2 231.5 512 249 512 268zm-266.9 77.1l105.7-158.3c2.7-4.2 3.5-8.8 2.6-13.7-1-4.9-3.5-8.8-7.7-11.4-4.2-2.7-8.8-3.6-13.7-2.9-5 .8-9 3.2-12 7.4l-93.1 140-42.9-42.8c-3.8-3.8-8.2-5.6-13.1-5.4-5 .2-9.3 2-13.1 5.4-3.4 3.4-5.1 7.7-5.1 12.9 0 5.1 1.7 9.4 5.1 12.9l58.9 58.9 2.9 2.3c3.4 2.3 6.9 3.4 10.3 3.4 6.7-.1 11.8-2.9 15.2-8.7z"
+                    <Linkedin
+                      className={`w-4 h-4 sm:w-5 sm:h-5 ${textSecondary} group-hover:text-white transition-colors duration-300`}
                     />
-                  </svg>
+                  </a>
+                  <a
+                    href="#"
+                    className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 ${borderColor} flex items-center justify-center hover:bg-[#a78bfa] hover:border-[#a78bfa] transition-all duration-300 hover:scale-110 group`}
+                  >
+                    <svg
+                      className={`w-4 h-4 sm:w-5 sm:h-5 ${textSecondary} group-hover:text-white transition-colors duration-300`}
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M20 3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H4V5h16v14zM8 10h2v5H8v-5zm1-1.5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1zm7 6.5h-2v-2.5c0-.83-.67-1.5-1.5-1.5S11 11.67 11 12.5V15H9v-5h2v.5c.5-.5 1.2-.8 2-.8 1.66 0 3 1.34 3 3V15z" />
+                    </svg>
+                  </a>
+                  <a
+                    href="#"
+                    className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 ${borderColor} flex items-center justify-center hover:bg-[#a78bfa] hover:border-[#a78bfa] transition-all duration-300 hover:scale-110 group`}
+                  >
+                    <svg
+                      className={`w-4 h-4 sm:w-5 sm:h-5 ${textSecondary} group-hover:text-white transition-colors duration-300`}
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-1.14 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                    </svg>
+                  </a>
+                </div>
 
-                  {/* Tooltip that appears on hover */}
-                  <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10">
-                    <div className="bg-white dark:bg-zinc-800 text-gray-800 dark:text-gray-200 text-xs rounded-lg py-2 px-3 shadow-lg border border-gray-200 dark:border-zinc-700">
-                      <div className="flex items-center gap-1.5">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-6 w-6 text-blue-500"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                          />
-                        </svg>
-                        <span>This account has been verified using data from Vercel and OnlineJobs.ph</span>
-                      </div>
-                      <div className="absolute left-1/2 -bottom-1 -translate-x-1/2 w-2 h-2 bg-white dark:bg-zinc-800 rotate-45 border-b border-r border-gray-200 dark:border-zinc-700"></div>
+                {/* Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-4">
+                  <InteractiveHoverButton
+                    text="Contact Me"
+                    icon="phone"
+                    variant="primary"
+                    className="w-full sm:w-auto"
+                    asButton
+                  />
+                  <InteractiveHoverButton
+                    text="View Resume and Portfolio"
+                    icon="arrow"
+                    variant="outline"
+                    className="w-full sm:w-auto"
+                    href="https://www.jcababa.me/JC_Ababa_Graphic_Designer_Resume_Portfolio_2025.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  />
+                </div>
+              </FrostedCard>
+
+              <FrostedCard className="transition-transform duration-300 hover:scale-105">
+                <div className="flex gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-16">
+                  <div className={`border-l-2 ${borderColorAlt} pl-2 sm:pl-3 md:pl-4 lg:pl-6`}>
+                    <div className="text-[#a78bfa] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-1">5+</div>
+                    <div
+                      className={`${textSecondary} text-[10px] sm:text-xs md:text-sm lg:text-base whitespace-nowrap`}
+                    >
+                      Experiences
+                    </div>
+                  </div>
+                  <div className={`border-l-2 ${borderColorAlt} pl-2 sm:pl-3 md:pl-4 lg:pl-6`}>
+                    <div className="text-[#a78bfa] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-1">20+</div>
+                    <div
+                      className={`${textSecondary} text-[10px] sm:text-xs md:text-sm lg:text-base whitespace-nowrap`}
+                    >
+                      Projects Done
+                    </div>
+                  </div>
+                  <div className={`border-l-2 ${borderColorAlt} pl-2 sm:pl-3 md:pl-4 lg:pl-6`}>
+                    <div className="text-[#a78bfa] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-1">8+</div>
+                    <div
+                      className={`${textSecondary} text-[10px] sm:text-xs md:text-sm lg:text-base whitespace-nowrap`}
+                    >
+                      Clients Worked With
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="bg-gradient-to-r from-pink-500 to-purple-500 px-4 py-2 rounded-full text-sm inline-block transition-transform duration-100 hover:scale-110 drop-shadow-[0_2px_8px_rgba(236,72,153,0.5)] hover:drop-shadow-[0_4px_12px_rgba(168,85,247,0.5)]">
-                <span className="text-black font-medium">Graphic Designer | IT Technician</span>
-              </div>
+              </FrostedCard>
             </div>
 
-            {/* Contact Information */}
-            <div className="space-y-5 flex-grow">
-              <Link href="mailto:itsmejesse@jcababa.me" className="flex items-center gap-4 group">
-                <div className="bg-zinc-900 dark:bg-white p-3 rounded-lg group-hover:bg-transparent transition-all duration-200 group-hover:scale-110">
-                  <Mail className="w-5 h-5 text-purple-400 dark:text-purple-500 group-hover:text-pink-600 dark:group-hover:text-pink-600 transition-colors duration-200" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-purple-500 dark:text-purple-400 text-sm">EMAIL</span>
-                  <span className="text-gray-700 dark:text-gray-300 group-hover:text-pink-500 transition-colors duration-200">
-                    itsmejesse@jcababa.me
-                  </span>
-                </div>
-              </Link>
-
-              <Link href="https://wa.me/639955264668" className="flex items-center gap-4 group">
-                <div className="bg-zinc-900 dark:bg-white p-3 rounded-lg group-hover:bg-transparent transition-all duration-150 group-hover:scale-110">
-                  <Phone className="w-5 h-5 text-purple-400 dark:text-purple-500 group-hover:text-pink-600 dark:group-hover:text-pink-600 transition-colors duration-100" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-purple-500 dark:text-purple-400 text-sm">PHONE</span>
-                  <span className="text-gray-700 dark:text-gray-300 group-hover:text-pink-500 transition-colors duration-100">
-                    +63 995 526 4668
-                  </span>
-                </div>
-              </Link>
-
-              <Link
-                href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Johncarlo's+Birthday&dates=20241118/20241119&recur=RRULE:FREQ=YEARLY"
-                target="_blank"
-                className="flex items-center gap-4 group"
-              >
-                <div className="bg-zinc-900 dark:bg-white p-3 rounded-lg group-hover:bg-transparent transition-all duration-150 group-hover:scale-110">
-                  <Calendar className="w-5 h-5 text-purple-400 dark:text-purple-500 group-hover:text-pink-600 dark:group-hover:text-pink-600 transition-colors duration-100" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-purple-500 dark:text-purple-400 text-sm">BIRTHDATE</span>
-                  <span className="text-gray-700 dark:text-gray-300 group-hover:text-pink-500 transition-colors duration-100">
-                    November 18, 2002
-                  </span>
-                </div>
-              </Link>
-
-              <Link
-                href="https://maps.google.com/?q=Bohol,Philippines"
-                target="_blank"
-                className="flex items-center gap-4 group"
-              >
-                <div className="bg-zinc-900 dark:bg-white p-3 rounded-lg group-hover:bg-transparent transition-all duration-150 group-hover:scale-110">
-                  <MapPin className="w-5 h-5 text-purple-400 dark:text-purple-500 group-hover:text-pink-600 dark:group-hover:text-pink-600 transition-colors duration-100" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-purple-500 dark:text-purple-400 text-sm">LOCATION</span>
-                  <span className="text-gray-700 dark:text-gray-300 group-hover:text-pink-500 transition-colors duration-100">
-                    Bohol, Philippines, Earth
-                  </span>
-                </div>
-              </Link>
+            <div className="flex flex-1 justify-center md:justify-end items-center relative w-full">
+              <div className="relative w-full max-w-[300px] sm:max-w-[350px] md:max-w-[400px] lg:max-w-[500px]">
+                {/* Circle overlay behind person */}
+                <div
+                  className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[350px] md:h-[350px] lg:w-[500px] lg:h-[500px] rounded-full border-2 md:border-4 ${borderColorAlt} opacity-30`}
+                />
+                <img
+                  src="/images/design-mode/b3c173b1-aefe-472b-b012-da91305109ce-cover.png"
+                  alt="Johncarlo Ababa"
+                  className="relative z-10 w-full h-auto max-h-[350px] sm:max-h-[400px] md:max-h-[500px] lg:h-[600px] object-contain"
+                />
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Social Links - Fixed at bottom */}
-            <div className="flex gap-5 justify-center pt-6 border-t border-zinc-800 mt-8">
-              <Link
-                href="https://www.facebook.com/firemax13"
-                className="group"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook Profile"
-              >
-                <Facebook
-                  className="w-6 h-6 text-purple-400 transition-all duration-200 group-hover:text-black dark:group-hover:text-white group-hover:scale-110"
-                  aria-hidden="true"
+      {/* About Me Section */}
+      <section
+        ref={(el) => {
+          if (el) sectionsRef.current[1] = el
+        }}
+        className={`min-h-screen flex flex-col snap-start relative overflow-hidden pt-32 pb-16 px-4 sm:px-8 md:px-12`}
+      >
+        <div className="max-w-[1200px] mx-auto w-full">
+          <h2 className="text-[#a78bfa] text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 md:mb-12">
+            About Me
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-10">
+            <div className="col-span-1 md:col-span-2">
+              <FrostedCard className="transition-transform duration-300 hover:scale-105">
+                <h3 className={`${textPrimary} text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-4`}>
+                  Profile
+                </h3>
+                <p className={`${textSecondary} leading-relaxed text-sm sm:text-base md:text-lg`}>
+                  I'm a passionate Email Graphic Designer with over a year of experience creating minimalistic, clean,
+                  responsive, and impactful designs for email marketing campaigns. I specialize in turning copy into
+                  visuals that not only look professional but also drive engagement and conversions. I also incorporate
+                  AI for image generation—helping me adjust hero images, product visuals, and creative assets quickly
+                  while keeping designs polished and consistent. With a strong focus on brand identity and adaptability
+                  across industries, I ensure every campaign delivers a seamless experience on all devices.
+                </p>
+              </FrostedCard>
+            </div>
+            <div>
+              <FrostedCard className="transition-transform duration-300 hover:scale-105">
+                <h3 className={`${textPrimary} text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-4`}>
+                  Skills
+                </h3>
+                <ul className="space-y-3">
+                  <li className={`${textTertiary} flex items-center gap-3 text-sm sm:text-base md:text-lg`}>
+                    <span className="w-2 h-2 bg-[#a78bfa] rounded-full flex-shrink-0" />
+                    Email Campaign Design
+                  </li>
+                  <li className={`${textTertiary} flex items-center gap-3 text-sm sm:text-base md:text-lg`}>
+                    <span className="w-2 h-2 bg-[#a78bfa] rounded-full flex-shrink-0" />
+                    AI Image Generation
+                  </li>
+                  <li className={`${textTertiary} flex items-center gap-3 text-sm sm:text-base md:text-lg`}>
+                    <span className="w-2 h-2 bg-[#a78bfa] rounded-full flex-shrink-0" />
+                    Graphic Design
+                  </li>
+                  <li className={`${textTertiary} flex items-center gap-3 text-sm sm:text-base md:text-lg`}>
+                    <span className="w-2 h-2 bg-[#a78bfa] rounded-full flex-shrink-0" />
+                    Layout Design
+                  </li>
+                  <li className={`${textTertiary} flex items-center gap-3 text-sm sm:text-base md:text-lg`}>
+                    <span className="w-2 h-2 bg-[#a78bfa] rounded-full flex-shrink-0" />
+                    Responsive Design
+                  </li>
+                </ul>
+              </FrostedCard>
+            </div>
+            <div>
+              <FrostedCard className="transition-transform duration-300 hover:scale-105">
+                <h3 className={`${textPrimary} text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-4`}>
+                  Tools
+                </h3>
+                <ul className="space-y-3 mb-8">
+                  <li className={`${textTertiary} flex items-center gap-3 text-sm sm:text-base md:text-lg`}>
+                    <span className="w-2 h-2 bg-[#a78bfa] rounded-full flex-shrink-0" />
+                    Adobe Photoshop
+                  </li>
+                  <li className={`${textTertiary} flex items-center gap-3 text-sm sm:text-base md:text-lg`}>
+                    <span className="w-2 h-2 bg-[#a78bfa] rounded-full flex-shrink-0" />
+                    Canva
+                  </li>
+                  <li className={`${textTertiary} flex items-center gap-3 text-sm sm:text-base md:text-lg`}>
+                    <span className="w-2 h-2 bg-[#a78bfa] rounded-full flex-shrink-0" />
+                    Figma
+                  </li>
+                </ul>
+                <InteractiveHoverButton
+                  text="View Resume and Portfolio"
+                  icon="arrow"
+                  variant="outline"
+                  className="w-full"
+                  href="https://www.jcababa.me/JC_Ababa_Graphic_Designer_Resume_Portfolio_2025.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 />
-              </Link>
-              <Link
-                href="https://www.instagram.com/jacoboi13/"
-                className="group"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram Profile"
-              >
-                <Instagram
-                  className="w-6 h-6 text-purple-400 transition-all duration-200 group-hover:text-black dark:group-hover:text-white group-hover:scale-110"
-                  aria-hidden="true"
-                />
-              </Link>
-              <Link
-                href="https://t.me/itsmejesseme"
-                className="group"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Telegram Profile"
-              >
-                <svg
-                  className="w-6 h-6 text-purple-400 transition-all duration-200 group-hover:text-black dark:group-hover:text-white group-hover:scale-110"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-                </svg>
-              </Link>
-              <Link href="#" className="group" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile">
-                <BrandTwitter
-                  className="w-6 h-6 text-purple-400 transition-all duration-200 group-hover:text-black dark:group-hover:text-white group-hover:scale-110"
-                  aria-hidden="true"
-                />
-              </Link>
+              </FrostedCard>
             </div>
           </div>
         </div>
 
-        {/* About and Skills Section */}
-        <div className="md:col-span-2 space-y-8">
-          <section>
-            <h2 className="text-3xl font-bold mb-4 text-purple-400 heading-special">About Me</h2>
-            <div className="bg-white dark:bg-zinc-900/50 rounded-lg shadow-md p-6 border border-gray-200 dark:border-zinc-800 transition-transform duration-300 hover:scale-105">
-              <p className="mb-4 text-gray-600 dark:text-gray-300">
-                I'm a multi-disciplinary tech and creative professional based in the Philippines, seamlessly blending IT
-                expertise with a passion for visual storytelling. With over 3 years of experience in custom kernel and
-                ROM development for Samsung devices, I transform complex technical challenges into streamlined,
-                automated solutions.
-              </p>
-              <p className="mb-4 text-gray-600 dark:text-gray-300">
-                Beyond technology, I excel in graphic design and photography, crafting compelling visuals that tell
-                unique stories. As a certified virtual assistant, I also provide comprehensive support that enhances
-                productivity and creativity.
-              </p>
-              <p className="mb-4 text-gray-600 dark:text-gray-300">
-                Let's connect to bring your ideas to life through innovative tech solutions and captivating design.
-              </p>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-3xl font-bold mb-4 text-pink-400 heading-special">What I'm Doing</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow-md border border-gray-200 dark:border-zinc-800 transition-transform duration-300 hover:scale-105">
-                <div className="flex items-center gap-2 mb-2 transition-all duration-200 hover:scale-110">
-                  <span className="p-2 bg-gray-100 dark:bg-black rounded-full transition-all duration-200 hover:scale-110">
-                    <svg
-                      className="w-4 h-4 text-purple-400"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                      />
-                    </svg>
-                  </span>
-                  <h3 className="font-bold text-lg text-gray-900 dark:text-white">Data Scraping</h3>
-                </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Professional social media data extraction</p>
-              </div>
-              <div className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow-md border border-gray-200 dark:border-zinc-800 transition-transform duration-300 hover:scale-105">
-                <div className="flex items-center gap-2 mb-2 transition-all duration-200 hover:scale-110">
-                  <span className="p-2 bg-gray-100 dark:bg-black rounded-full transition-all duration-200 hover:scale-110">
-                    <svg
-                      className="w-4 h-4 text-purple-400"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                      />
-                      <circle cx="12" cy="13" r="4" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
-                    </svg>
-                  </span>
-                  <h3 className="font-bold text-lg text-gray-900 dark:text-white">Photographer</h3>
-                </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Capturing high-quality photos across various categories at a professional level
-                </p>
-              </div>
-              <div className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow-md border border-gray-200 dark:border-zinc-800 transition-transform duration-300 hover:scale-105">
-                <div className="flex items-center gap-2 mb-2 transition-all duration-200 hover:scale-110">
-                  <span className="p-2 bg-gray-100 dark:bg-black rounded-full transition-all duration-200 hover:scale-110">
-                    <svg
-                      className="w-4 h-4 text-purple-400"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M15.5 15.5L5 5M7.036 7.036l.707-.707a4 4 0 0 1 5.657 0l4.243 4.243a4 4 0 0 1 0 5.657l-.707.707M12 12l4.5 4.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                      />
-                    </svg>
-                  </span>
-                  <h3 className="font-bold text-lg text-gray-900 dark:text-white">Graphic Designing</h3>
-                </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Delivering innovative and professional designs that make a lasting impression
-                </p>
-              </div>
-              <div className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow-md border border-gray-200 dark:border-zinc-800 transition-transform duration-300 hover:scale-105">
-                <div className="flex items-center gap-2 mb-2 transition-all duration-200 hover:scale-110">
-                  <span className="p-2 bg-gray-100 dark:bg-black rounded-full">
-                    <svg
-                      className="w-4 h-4 text-purple-400"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 3a4 4 0 100 8 4 4 0 000-8z"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                      />
-                    </svg>
-                  </span>
-                  <h3 className="font-bold text-lg text-gray-900 dark:text-white">Virtual Assistant</h3>
-                </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">Providing support for a wide range of tasks</p>
-              </div>
-              <div className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow-md border border-gray-200 dark:border-zinc-800 transition-transform duration-300 hover:scale-105">
-                <div className="flex items-center gap-2 mb-2 transition-all duration-200 hover:scale-110">
-                  <span className="p-2 bg-gray-100 dark:bg-black rounded-full transition-all duration-200 hover:scale-110">
-                    <svg
-                      className="w-4 h-4 text-purple-400"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                      />
-                    </svg>
-                  </span>
-                  <h3 className="font-bold text-lg text-gray-900 dark:text-white">Vibe Coding</h3>
-                </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Translating creative ideas into functional code through AI-driven development and intuitive design
-                  thinking
-                </p>
-              </div>
-
-              <div className="bg-white dark:bg-zinc-900 p-4 rounded-lg shadow-md border border-gray-200 dark:border-zinc-800 transition-transform duration-300 hover:scale-105">
-                <div className="flex items-center gap-2 mb-2 transition-all duration-200 hover:scale-110">
-                  <span className="p-2 bg-gray-100 dark:bg-black rounded-full transition-all duration-200 hover:scale-110">
-                    <svg
-                      className="w-4 h-4 text-purple-400"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                      />
-                    </svg>
-                  </span>
-                  <h3 className="font-bold text-lg text-gray-900 dark:text-white">Automation</h3>
-                </div>
-                <p className="text-sm text-gray-600 dark:text-gray-300">
-                  Transforming repetitive workflows into seamless, efficient processes that unlock human potential
-                </p>
+        <div className={`w-full py-6 md:py-8 mt-auto`}>
+          <FrostedCard className="max-w-[1400px] mx-auto transition-transform duration-300 hover:scale-105">
+            <h3
+              className={`${textPrimary} text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-center mb-6 md:mb-8`}
+            >
+              Worked with these brands
+            </h3>
+            <div className="relative overflow-hidden">
+              <div className="flex animate-marquee-fast whitespace-nowrap">
+                {[...brandLogos, ...brandLogos, ...brandLogos].map((brand, index) => (
+                  <div key={index} className="mx-3 md:mx-4 flex items-center justify-center flex-shrink-0">
+                    <img
+                      src={brand.logo || "/placeholder.svg"}
+                      alt={brand.name}
+                      className="w-[150px] h-[60px] md:w-[180px] md:h-[70px] object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement
+                        const parent = target.parentElement
+                        if (parent) {
+                          parent.innerHTML = `<span class="${textSecondary} text-xl md:text-2xl font-bold hover:text-[#a78bfa] transition-colors duration-300">${brand.name}</span>`
+                        }
+                      }}
+                    />
+                  </div>
+                ))}
               </div>
             </div>
-          </section>
+          </FrostedCard>
         </div>
-      </div>
+      </section>
     </div>
   )
 }
