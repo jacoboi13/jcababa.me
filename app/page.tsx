@@ -97,7 +97,7 @@ export default function PortfolioPage() {
     { name: "Brand 5", logo: "/brand-logo-5.png" },
     { name: "Brand 6", logo: "/brand-logo-6.png" },
     { name: "Brand 7", logo: "/brand-logo-7.png" },
-    { name: "Brand 8", logo: "/brand-logo-8.jpg" },
+    { name: "Brand 8", logo: "/brand-logo-8.png" },
   ]
 
   const nextBrandIndex = (currentBrandIndex + 1) % brandLogos.length
