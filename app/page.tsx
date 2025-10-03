@@ -204,10 +204,6 @@ export default function PortfolioPage() {
 
             <div className="flex flex-1 justify-center md:justify-end items-center relative w-full">
               <div className="relative w-full max-w-[300px] sm:max-w-[350px] md:max-w-[400px] lg:max-w-[500px]">
-                {/* Circle overlay behind person */}
-                <div
-                  className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[350px] md:h-[350px] lg:w-[500px] lg:h-[500px] rounded-full border-2 md:border-4 ${borderColorAlt} opacity-30`}
-                />
                 <img
                   src="/images/design-mode/b3c173b1-aefe-472b-b012-da91305109ce-cover.png"
                   alt="Johncarlo Ababa"
