@@ -12,6 +12,7 @@ export default function PortfolioPage() {
   const [currentSection, setCurrentSection] = useState(0)
   const [currentBrandIndex, setCurrentBrandIndex] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const [imagesLoaded, setImagesLoaded] = useState(false)
 
   useEffect(() => {
     const observerOptions = {
@@ -45,16 +46,38 @@ export default function PortfolioPage() {
   }, [])
 
   useEffect(() => {
+    const preloadImages = async () => {
+      const imagePromises = brandLogos.map((brand) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image()
+          img.src = brand.logo
+          img.onload = resolve
+          img.onerror = resolve // Resolve even on error to not block the carousel
+        })
+      })
+
+      await Promise.all(imagePromises)
+      setImagesLoaded(true)
+      console.log("[v0] All brand images preloaded")
+    }
+
+    preloadImages()
+  }, [])
+
+  useEffect(() => {
+    if (!imagesLoaded) return // Don't start carousel until images are loaded
+
     const interval = setInterval(() => {
       setIsTransitioning(true)
+
       setTimeout(() => {
         setCurrentBrandIndex((prev) => (prev + 1) % brandLogos.length)
         setIsTransitioning(false)
-      }, 500) // Fade out duration
+      }, 600) // Match transition duration
     }, 3000) // Change brand every 3 seconds
 
     return () => clearInterval(interval)
-  }, [])
+  }, [imagesLoaded])
 
   const scrollToSection = (index: number) => {
     sectionsRef.current[index]?.scrollIntoView({ behavior: "smooth" })
@@ -76,6 +99,8 @@ export default function PortfolioPage() {
     { name: "Brand 7", logo: "/brand-logo-7.png" },
     { name: "Brand 8", logo: "/brand-logo-8.jpg" },
   ]
+
+  const nextBrandIndex = (currentBrandIndex + 1) % brandLogos.length
 
   return (
     <div className="h-screen overflow-y-auto snap-y snap-mandatory select-none relative">
@@ -329,8 +354,9 @@ export default function PortfolioPage() {
               Worked with these brands
             </h3>
             <div className="relative h-[80px] md:h-[90px] flex items-center justify-center">
+              {/* Current brand image */}
               <div
-                className={`absolute inset-0 flex items-center justify-center transition-opacity duration-500 ${
+                className={`absolute inset-0 flex items-center justify-center transition-opacity duration-600 ${
                   isTransitioning ? "opacity-0" : "opacity-100"
                 }`}
               >
@@ -347,6 +373,25 @@ export default function PortfolioPage() {
                   }}
                 />
               </div>
+              {/* Next brand image for crossfade */}
+              <div
+                className={`absolute inset-0 flex items-center justify-center transition-opacity duration-600 ${
+                  isTransitioning ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <img
+                  src={brandLogos[nextBrandIndex].logo || "/placeholder.svg"}
+                  alt={brandLogos[nextBrandIndex].name}
+                  className="w-[200px] h-[70px] md:w-[240px] md:h-[80px] object-contain"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement
+                    const parent = target.parentElement
+                    if (parent) {
+                      parent.innerHTML = `<span class="${textSecondary} text-2xl md:text-3xl font-bold">${brandLogos[nextBrandIndex].name}</span>`
+                    }
+                  }}
+                />
+              </div>
             </div>
             <div className="flex justify-center gap-2 mt-4">
               {brandLogos.map((_, index) => (
@@ -357,7 +402,7 @@ export default function PortfolioPage() {
                     setTimeout(() => {
                       setCurrentBrandIndex(index)
                       setIsTransitioning(false)
-                    }, 500)
+                    }, 600)
                   }}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     index === currentBrandIndex ? "bg-[#a78bfa] w-6" : "bg-gray-500 hover:bg-gray-400"
