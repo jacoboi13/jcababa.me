@@ -210,8 +210,8 @@ export default function PortfolioPage() {
                 avatarUrl="/images/design-mode/b3c173b1-aefe-472b-b012-da91305109ce-cover.png"
                 miniAvatarUrl="/images/design-mode/b3c173b1-aefe-472b-b012-da91305109ce-cover.png"
                 showUserInfo={true}
-                enableTilt={false}
-                enableMobileTilt={false}
+                enableTilt={true}
+                enableMobileTilt={true}
                 onContactClick={handleProfileContact}
               />
             </div>
@@ -301,13 +301,6 @@ export default function PortfolioPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                   />
-                  <InteractiveHoverButton
-                    text="Hire Me"
-                    icon="arrow"
-                    variant="outline"
-                    className="w-full"
-                    onClick={handleHireMe}
-                  />
                 </div>
               </FrostedCard>
 
@@ -365,7 +358,7 @@ export default function PortfolioPage() {
 
               <div className="w-full flex items-center justify-center">
                 <AwardBadge
-                  type="golden-kitty"
+                  type="product-of-the-week"
                   customTopText="CAREER HUNT"
                   customBottomText="Email Designer Awards"
                   link="#"
