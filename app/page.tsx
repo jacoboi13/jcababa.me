@@ -83,7 +83,7 @@ export default function PortfolioPage() {
           suspendWhenOffscreen={false}
           timeScale={0.5}
         />
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       <NavBar activeSection={currentSection} onNavigate={scrollToSection} />
@@ -114,7 +114,9 @@ export default function PortfolioPage() {
                 {/* Social Icons */}
                 <div className="flex gap-3 sm:gap-4 mb-8 sm:mb-10">
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/in/jcababame/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 ${borderColor} flex items-center justify-center hover:bg-[#a78bfa] hover:border-[#a78bfa] transition-all duration-300 hover:scale-110 group`}
                   >
                     <Linkedin
@@ -122,19 +124,21 @@ export default function PortfolioPage() {
                     />
                   </a>
                   <a
-                    href="#"
+                    href="https://www.onlinejobs.ph/jobseekers/info/3775723"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 ${borderColor} flex items-center justify-center hover:bg-[#a78bfa] hover:border-[#a78bfa] transition-all duration-300 hover:scale-110 group`}
                   >
-                    <svg
-                      className={`w-4 h-4 sm:w-5 sm:h-5 ${textSecondary} group-hover:text-white transition-colors duration-300`}
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
+                    <span
+                      className={`text-[10px] sm:text-xs font-bold ${textSecondary} group-hover:text-white transition-colors duration-300`}
                     >
-                      <path d="M20 3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H4V5h16v14zM8 10h2v5H8v-5zm1-1.5c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1zm7 6.5h-2v-2.5c0-.83-.67-1.5-1.5-1.5S11 11.67 11 12.5V15H9v-5h2v.5c.5-.5 1.2-.8 2-.8 1.66 0 3 1.34 3 3V15z" />
-                    </svg>
+                      OLJ
+                    </span>
                   </a>
                   <a
-                    href="#"
+                    href="https://wa.me/639397811597"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 ${borderColor} flex items-center justify-center hover:bg-[#a78bfa] hover:border-[#a78bfa] transition-all duration-300 hover:scale-110 group`}
                   >
                     <svg
@@ -154,14 +158,14 @@ export default function PortfolioPage() {
                     icon="phone"
                     variant="primary"
                     className="w-full sm:w-auto"
-                    asButton
+                    href="mailto:jcababa.sn0w@gmail.com"
                   />
                   <InteractiveHoverButton
                     text="View Resume and Portfolio"
                     icon="arrow"
                     variant="outline"
                     className="w-full sm:w-auto"
-                    href="https://www.jcababa.me/JC_Ababa_Graphic_Designer_Resume_Portfolio_2025.pdf"
+                    href="https://www.jcababa.me/JC_Ababa_EmailGraphicDesigner_Resume_&_Portfolio_2025.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                   />
@@ -295,7 +299,7 @@ export default function PortfolioPage() {
                   icon="arrow"
                   variant="outline"
                   className="w-full"
-                  href="https://www.jcababa.me/JC_Ababa_Graphic_Designer_Resume_Portfolio_2025.pdf"
+                  href="https://www.jcababa.me/JC_Ababa_EmailGraphicDesigner_Resume_&_Portfolio_2025.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                 />
