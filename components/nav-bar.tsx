@@ -42,7 +42,7 @@ export function NavBar({ activeSection, onNavigate, className }: NavBarProps) {
               key={item.name}
               onClick={() => onNavigate(item.index)}
               className={cn(
-                "relative cursor-pointer text-xs sm:text-sm font-semibold px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full transition-all duration-300 text-gray-300 hover:text-[#a78bfa]",
+                "relative cursor-pointer text-xs sm:text-sm font-semibold px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-lg transition-all duration-300 text-gray-300 hover:text-[#a78bfa]",
                 isActive && "text-[#a78bfa]",
               )}
             >
@@ -53,7 +53,7 @@ export function NavBar({ activeSection, onNavigate, className }: NavBarProps) {
               {isActive && (
                 <motion.div
                   layoutId="lamp"
-                  className="absolute inset-0 w-full bg-white/20 rounded-full -z-10"
+                  className="absolute inset-0 w-full bg-white/20 rounded-lg -z-10"
                   initial={false}
                   transition={{
                     type: "spring",
@@ -72,8 +72,8 @@ export function NavBar({ activeSection, onNavigate, className }: NavBarProps) {
           )
         })}
 
-        <RainbowButton className="px-8 py-1.5 text-xs sm:px-10 sm:py-2 sm:text-sm md:px-14 md:py-2 md:text-sm lg:px-16 h-auto text-white hover:bg-transparent hover:text-[#a78bfa] border-2 border-transparent hover:border-white transition-all duration-300 whitespace-nowrap">
-          Hire Me
+        <RainbowButton className="px-8 py-1.5 text-xs sm:px-10 sm:py-2 sm:text-sm md:px-16 md:py-2 md:text-sm lg:px-20 h-auto hover:bg-transparent hover:border-white border-2 border-transparent transition-all duration-300 whitespace-nowrap rounded-lg">
+          <span className="font-semibold">Hire Me</span>
         </RainbowButton>
       </div>
     </div>
