@@ -10,6 +10,8 @@ import Prism from "@/components/prism"
 export default function PortfolioPage() {
   const sectionsRef = useRef<HTMLDivElement[]>([])
   const [currentSection, setCurrentSection] = useState(0)
+  const [currentBrandIndex, setCurrentBrandIndex] = useState(0)
+  const [isTransitioning, setIsTransitioning] = useState(false)
 
   useEffect(() => {
     const observerOptions = {
@@ -40,6 +42,18 @@ export default function PortfolioPage() {
         if (section) observer.unobserve(section)
       })
     }
+  }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsTransitioning(true)
+      setTimeout(() => {
+        setCurrentBrandIndex((prev) => (prev + 1) % brandLogos.length)
+        setIsTransitioning(false)
+      }, 500) // Fade out duration
+    }, 3000) // Change brand every 3 seconds
+
+    return () => clearInterval(interval)
   }, [])
 
   const scrollToSection = (index: number) => {
@@ -314,26 +328,43 @@ export default function PortfolioPage() {
             >
               Worked with these brands
             </h3>
-            <div className="relative overflow-hidden">
-              <div className="flex animate-seamless-scroll">
-                {/* Duplicate the array twice for seamless looping */}
-                {[...brandLogos, ...brandLogos].map((brand, index) => (
-                  <div key={index} className="mx-3 md:mx-4 flex items-center justify-center flex-shrink-0">
-                    <img
-                      src={brand.logo || "/placeholder.svg"}
-                      alt={brand.name}
-                      className="w-[150px] h-[60px] md:w-[180px] md:h-[70px] object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement
-                        const parent = target.parentElement
-                        if (parent) {
-                          parent.innerHTML = `<span class="${textSecondary} text-xl md:text-2xl font-bold hover:text-[#a78bfa] transition-colors duration-300">${brand.name}</span>`
-                        }
-                      }}
-                    />
-                  </div>
-                ))}
+            <div className="relative h-[80px] md:h-[90px] flex items-center justify-center">
+              <div
+                className={`absolute inset-0 flex items-center justify-center transition-opacity duration-500 ${
+                  isTransitioning ? "opacity-0" : "opacity-100"
+                }`}
+              >
+                <img
+                  src={brandLogos[currentBrandIndex].logo || "/placeholder.svg"}
+                  alt={brandLogos[currentBrandIndex].name}
+                  className="w-[200px] h-[70px] md:w-[240px] md:h-[80px] object-contain"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement
+                    const parent = target.parentElement
+                    if (parent) {
+                      parent.innerHTML = `<span class="${textSecondary} text-2xl md:text-3xl font-bold">${brandLogos[currentBrandIndex].name}</span>`
+                    }
+                  }}
+                />
               </div>
+            </div>
+            <div className="flex justify-center gap-2 mt-4">
+              {brandLogos.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    setIsTransitioning(true)
+                    setTimeout(() => {
+                      setCurrentBrandIndex(index)
+                      setIsTransitioning(false)
+                    }, 500)
+                  }}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === currentBrandIndex ? "bg-[#a78bfa] w-6" : "bg-gray-500 hover:bg-gray-400"
+                  }`}
+                  aria-label={`Go to ${brandLogos[index].name}`}
+                />
+              ))}
             </div>
           </FrostedCard>
         </div>
