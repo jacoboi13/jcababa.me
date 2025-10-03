@@ -12,7 +12,7 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: "Johncarlo Ababa - Email Graphics Designer",
+  title: "Johncarlo Ababa",
   description: "Portfolio of Johncarlo Ababa, Email Graphics Designer",
   generator: "v0.app",
 }
