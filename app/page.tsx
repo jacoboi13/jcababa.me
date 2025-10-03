@@ -53,8 +53,8 @@ export default function PortfolioPage() {
   const borderColorAlt = "border-gray-500"
 
   const brandLogos = [
-    { name: "Brand 1", logo: "/generic-brand-logo-1.png" },
-    { name: "Brand 2", logo: "/generic-brand-logo-2.png" },
+    { name: "Brand 1", logo: "/brand-logo-1.png" },
+    { name: "Brand 2", logo: "/brand-logo-2.png" },
     { name: "Brand 3", logo: "/brand-logo-3.png" },
     { name: "Brand 4", logo: "/brand-logo-4.png" },
     { name: "Brand 5", logo: "/brand-logo-5.png" },
