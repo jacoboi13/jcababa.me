@@ -144,6 +144,20 @@
     scroll-snap-align: start;
   }
 
+  /* Added seamless scroll animation for brand carousel without glitching */
+  @keyframes seamless-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-seamless-scroll {
+    animation: seamless-scroll 20s linear infinite;
+  }
+
   /* Added marquee animation for brand logos */
   @keyframes marquee {
     0% {

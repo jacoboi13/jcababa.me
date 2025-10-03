@@ -14,8 +14,8 @@ export default function PortfolioPage() {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "-45% 0px -45% 0px",
-      threshold: 0.1,
+      rootMargin: "-40% 0px -40% 0px",
+      threshold: 0,
     }
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
@@ -315,8 +315,9 @@ export default function PortfolioPage() {
               Worked with these brands
             </h3>
             <div className="relative overflow-hidden">
-              <div className="flex animate-marquee-fast whitespace-nowrap">
-                {[...brandLogos, ...brandLogos, ...brandLogos].map((brand, index) => (
+              <div className="flex animate-seamless-scroll">
+                {/* Duplicate the array twice for seamless looping */}
+                {[...brandLogos, ...brandLogos].map((brand, index) => (
                   <div key={index} className="mx-3 md:mx-4 flex items-center justify-center flex-shrink-0">
                     <img
                       src={brand.logo || "/placeholder.svg"}
