@@ -232,13 +232,16 @@ export default function PortfolioPage() {
                 <h3 className={`${textPrimary} text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-4`}>
                   Profile
                 </h3>
-                <p className={`${textSecondary} leading-relaxed text-sm sm:text-base md:text-lg`}>
+                <p className={`${textSecondary} leading-relaxed text-sm sm:text-base md:text-lg mb-4`}>
                   I'm a passionate Email Graphic Designer with over a year of experience creating minimalistic, clean,
                   responsive, and impactful designs for email marketing campaigns. I specialize in turning copy into
                   visuals that not only look professional but also drive engagement and conversions. I also incorporate
                   AI for image generation—helping me adjust hero images, product visuals, and creative assets quickly
-                  while keeping designs polished and consistent. With a strong focus on brand identity and adaptability
-                  across industries, I ensure every campaign delivers a seamless experience on all devices.
+                  while keeping designs polished and consistent.
+                </p>
+                <p className={`${textSecondary} leading-relaxed text-sm sm:text-base md:text-lg`}>
+                  With a strong focus on brand identity and adaptability across industries, I ensure every campaign
+                  delivers a seamless experience on all devices.
                 </p>
               </FrostedCard>
             </div>
