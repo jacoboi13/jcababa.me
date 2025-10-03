@@ -13,6 +13,59 @@ export default function PortfolioPage() {
   const [currentBrandIndex, setCurrentBrandIndex] = useState(0)
   const [isVisible, setIsVisible] = useState(true)
   const [imagesLoaded, setImagesLoaded] = useState(false)
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
+  const isTransitioningRef = useRef(false)
+
+  const scrollToSection = (index: number) => {
+    sectionsRef.current[index]?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  const changeBrand = (index: number) => {
+    if (isTransitioningRef.current || index === currentBrandIndex) return
+
+    isTransitioningRef.current = true
+    setIsVisible(false)
+
+    setTimeout(() => {
+      setCurrentBrandIndex(index)
+      setIsVisible(true)
+      isTransitioningRef.current = false
+
+      // Restart the interval after manual change
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+      intervalRef.current = setInterval(() => {
+        if (isTransitioningRef.current) return
+
+        isTransitioningRef.current = true
+        setIsVisible(false)
+
+        setTimeout(() => {
+          setCurrentBrandIndex((prev) => (prev + 1) % brandLogos.length)
+          setIsVisible(true)
+          isTransitioningRef.current = false
+        }, 100)
+      }, 4000)
+    }, 100)
+  }
+
+  const textPrimary = "text-white"
+  const textSecondary = "text-gray-200"
+  const textTertiary = "text-gray-100"
+  const borderColor = "border-gray-400"
+  const borderColorAlt = "border-gray-500"
+
+  const brandLogos = [
+    { name: "Brand 1", logo: "/brand-logo-1.png" },
+    { name: "Brand 2", logo: "/brand-logo-2.png" },
+    { name: "Brand 3", logo: "/brand-logo-3.png" },
+    { name: "Brand 4", logo: "/brand-logo-4.png" },
+    { name: "Brand 5", logo: "/brand-logo-5.png" },
+    { name: "Brand 6", logo: "/brand-logo-6.png" },
+    { name: "Brand 7", logo: "/brand-logo-7.png" },
+    { name: "Brand 8", logo: "/brand-logo-8.png" },
+  ]
 
   useEffect(() => {
     const observerOptions = {
@@ -65,40 +118,37 @@ export default function PortfolioPage() {
   }, [])
 
   useEffect(() => {
-    if (!imagesLoaded) return // Don't start carousel until images are loaded
+    if (!imagesLoaded) return
 
-    const interval = setInterval(() => {
-      setIsVisible(false)
+    const startCarousel = () => {
+      // Clear any existing interval
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
 
-      setTimeout(() => {
-        setCurrentBrandIndex((prev) => (prev + 1) % brandLogos.length)
-        setIsVisible(true)
-      }, 100) // Quick hide before showing next brand
-    }, 3000)
+      intervalRef.current = setInterval(() => {
+        // Prevent overlapping transitions
+        if (isTransitioningRef.current) return
 
-    return () => clearInterval(interval)
+        isTransitioningRef.current = true
+        setIsVisible(false)
+
+        setTimeout(() => {
+          setCurrentBrandIndex((prev) => (prev + 1) % brandLogos.length)
+          setIsVisible(true)
+          isTransitioningRef.current = false
+        }, 100)
+      }, 4000) // 4 seconds: 100ms fade out + 1000ms fade in + 2900ms display time
+    }
+
+    startCarousel()
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
   }, [imagesLoaded])
-
-  const scrollToSection = (index: number) => {
-    sectionsRef.current[index]?.scrollIntoView({ behavior: "smooth" })
-  }
-
-  const textPrimary = "text-white"
-  const textSecondary = "text-gray-200"
-  const textTertiary = "text-gray-100"
-  const borderColor = "border-gray-400"
-  const borderColorAlt = "border-gray-500"
-
-  const brandLogos = [
-    { name: "Brand 1", logo: "/brand-logo-1.png" },
-    { name: "Brand 2", logo: "/brand-logo-2.png" },
-    { name: "Brand 3", logo: "/brand-logo-3.png" },
-    { name: "Brand 4", logo: "/brand-logo-4.png" },
-    { name: "Brand 5", logo: "/brand-logo-5.png" },
-    { name: "Brand 6", logo: "/brand-logo-6.png" },
-    { name: "Brand 7", logo: "/brand-logo-7.png" },
-    { name: "Brand 8", logo: "/brand-logo-8.png" },
-  ]
 
   return (
     <div className="h-screen overflow-y-auto snap-y snap-mandatory select-none relative">
@@ -375,13 +425,7 @@ export default function PortfolioPage() {
               {brandLogos.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => {
-                    setIsVisible(false)
-                    setTimeout(() => {
-                      setCurrentBrandIndex(index)
-                      setIsVisible(true)
-                    }, 100)
-                  }}
+                  onClick={() => changeBrand(index)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     index === currentBrandIndex ? "bg-[#a78bfa] w-6" : "bg-gray-500 hover:bg-gray-400"
                   }`}
