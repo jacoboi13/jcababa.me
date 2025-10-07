@@ -361,7 +361,6 @@ export default function PortfolioPage() {
                   type="product-of-the-week"
                   customTopText="CAREER HUNT"
                   customBottomText="Email Designer Awards"
-                  link="#"
                 />
               </div>
             </div>
