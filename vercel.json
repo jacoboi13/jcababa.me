@@ -1,17 +1,14 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist/spa",
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api"
+      "source": "/api/:path*",
+      "destination": "/api"
     },
     {
-      "src": "/(.*)",
-      "dest": "/api"
+      "source": "/:path*",
+      "destination": "/"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  ]
 }
