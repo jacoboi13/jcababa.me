@@ -99,7 +99,7 @@ export default {
         "carousel-mobile": "carousel 25s linear infinite",
         "carousel-tablet": "carousel 35s linear infinite",
         "carousel-desktop": "carousel 50s linear infinite",
-        ticker: "ticker 20s linear infinite",
+        ticker: "ticker 5s linear infinite",
       },
     },
   },
