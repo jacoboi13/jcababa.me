@@ -36,10 +36,10 @@
       "colorRight": "#FF00E5"
     },
     "brandPersonas": [
-      { "src": "/brand-persona-1.svg", "alt": "Brand Partner 1" },
-      { "src": "/brand-persona-2.svg", "alt": "Brand Partner 2" },
-      { "src": "/brand-persona-3.svg", "alt": "Brand Partner 3" },
-      { "src": "/brand-persona-4.svg", "alt": "Brand Partner 4" }
+      { "src": "/brand-persona-1.png", "alt": "Brand Partner 1" },
+      { "src": "/brand-persona-2.png", "alt": "Brand Partner 2" },
+      { "src": "/brand-persona-3.png", "alt": "Brand Partner 3" },
+      { "src": "/brand-persona-4.png", "alt": "Brand Partner 4" }
     ]
   },
   "logoCarousel": {
