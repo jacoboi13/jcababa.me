@@ -10,7 +10,7 @@ export default function LogoCarousel() {
   return (
     <section className="w-full bg-white shadow-sm py-8 md:py-10 lg:py-12">
       <div className="relative overflow-hidden">
-        <div className="flex animate-carousel-mobile md:animate-carousel-tablet lg:animate-carousel-desktop gap-6 md:gap-12 lg:gap-16 w-fit">
+        <div class="flex animate-carousel-mobile md:animate-carousel-tablet lg:animate-carousel-desktop gap-6 md:gap-12 lg:gap-16 min-w-max">
           {tripleLogos.map((logo, index) => (
             <div key={index} className="inline-flex items-center justify-center flex-shrink-0">
               <img
