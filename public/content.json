@@ -1,0 +1,135 @@
+{
+  "header": {
+    "brandName": {
+      "bold": "Sn0w",
+      "normal": "Ra1n"
+    },
+    "ctaButton": "Hire Me",
+    "ctaButtonLink": "https://jcababa.me",
+    "logoSrc": "/header-logo.svg",
+    "logoAlt": "Logo"
+  },
+  "hero": {
+    "heading": {
+      "part1": "He is ",
+      "name": "Johncarlo Ababa.",
+      "part2": " Your Next",
+      "title": "Email Designer"
+    },
+    "subheading": {
+      "intro": "I help brands turn emails into revenue using clean, strategic visuals. Not just an ",
+      "emphasis": "Email Designer",
+      "conclusion": " — a conversion partner."
+    },
+    "buttons": {
+      "primary": "View Resume & Portfolio",
+      "primaryLink": "https://jcababa.me",
+      "secondary": "About Me"
+    },
+    "trustBadge": "Trusted by 30+ eCommerce Brands",
+    "imageSrc": "/hero-image.svg",
+    "imageAlt": "Johncarlo Ababa",
+    "avatarAlt": "Avatar",
+    "gradient": {
+      "colorLeft": "#00C2FF",
+      "colorRight": "#FF00E5"
+    },
+    "brandPersonas": [
+      { "src": "/brand-persona-1.svg", "alt": "Brand Partner 1" },
+      { "src": "/brand-persona-2.svg", "alt": "Brand Partner 2" },
+      { "src": "/brand-persona-3.svg", "alt": "Brand Partner 3" },
+      { "src": "/brand-persona-4.svg", "alt": "Brand Partner 4" }
+    ]
+  },
+  "logoCarousel": {
+    "logos": [
+      { "src": "/logo-1.svg", "alt": "Logo 1" },
+      { "src": "/logo-2.svg", "alt": "Logo 2" },
+      { "src": "/logo-3.svg", "alt": "Logo 3" },
+      { "src": "/logo-4.svg", "alt": "Logo 4" },
+      { "src": "/logo-5.svg", "alt": "Logo 5" },
+      { "src": "/logo-6.svg", "alt": "Logo 6" },
+      { "src": "/logo-7.svg", "alt": "Logo 7" },
+      { "src": "/logo-8.svg", "alt": "Logo 8" }
+    ]
+  },
+  "stats": {
+    "imageSrc": "/stats-image.svg",
+    "imageAlt": "Johncarlo Ababa",
+    "gradient": {
+      "colorLeft": "#00C2FF",
+      "colorRight": "#FF00E5"
+    },
+    "metrics": [
+      { "value": "2+", "label": "Exp." },
+      { "value": "30+", "label": "Projects" },
+      { "value": "9+", "label": "Clients" }
+    ],
+    "skills": [
+      { "name": "Klaviyo", "percentage": 75 },
+      { "name": "Figma", "percentage": 85 },
+      { "name": "Canva", "percentage": 90 },
+      { "name": "Photoshop", "percentage": 80 }
+    ],
+    "awards": {
+      "organization": "Career Hunt",
+      "title": "Email Designer Awards",
+      "imageAlt": "Career Hunt Awards"
+    },
+    "buttons": {
+      "primary": "View Resume & Portfolio",
+      "primaryLink": "https://jcababa.me",
+      "secondary": "Projects"
+    }
+  },
+  "ticker": {
+    "text": "Email Designer ♦ "
+  },
+  "projects": {
+    "scrollIndicator": "Scroll Me! →",
+    "iconAlt": "Figma",
+    "cards": [
+      {
+        "title": "Email Campaign Design",
+        "description": "Modern email templates for eCommerce",
+        "bgImage": "/project-1.svg",
+        "link": "https://jcababa.me"
+      },
+      {
+        "title": "Brand Newsletter",
+        "description": "Strategic visual content for conversion",
+        "bgImage": "/project-2.svg",
+        "link": "https://jcababa.me"
+      },
+      {
+        "title": "Marketing Automation",
+        "description": "Clean, responsive email layouts",
+        "bgImage": "/project-3.svg",
+        "link": "https://jcababa.me"
+      }
+    ]
+  },
+  "cta": {
+    "buttons": {
+      "primary": "View Resume & Portfolio",
+      "primaryLink": "https://jcababa.me",
+      "secondary": "Brands Worked with"
+    }
+  },
+  "footer": {
+    "poweredByText": "Powered by: ",
+    "poweredByName": "Sn0wRa1n's Algorithm",
+    "socialLabels": {
+      "linkedin": "LinkedIn",
+      "whatsapp": "WhatsApp",
+      "dribbble": "Dribbble",
+      "discord": "Discord"
+    },
+    "socialLinks": [
+      { "platform": "linkedin", "href": "https://jcababa.me" },
+      { "platform": "whatsapp", "href": "https://jcababa.me" },
+      { "platform": "dribbble", "href": "https://jcababa.me" },
+      { "platform": "discord", "href": "https://jcababa.me" }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+<svg width="622" height="596" viewBox="0 0 622 596" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="622" height="596" rx="20" fill="url(#heroGradient)"/>
+  <circle cx="311" cy="298" r="150" fill="white" fill-opacity="0.2"/>
+  <circle cx="311" cy="298" r="100" fill="white" fill-opacity="0.3"/>
+  <circle cx="311" cy="298" r="50" fill="white" fill-opacity="0.5"/>
+  <defs>
+    <linearGradient id="heroGradient" x1="0" y1="298" x2="622" y2="298" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00C2FF"/>
+      <stop offset="1" stop-color="#FF00E5"/>
+    </linearGradient>
+  </defs>
+</svg>
