@@ -28,7 +28,7 @@
       "secondary": "About Me"
     },
     "trustBadge": "Trusted by 30+ eCommerce Brands",
-    "imageSrc": "/hero-image.svg",
+    "imageSrc": "/hero-image.png",
     "imageAlt": "Johncarlo Ababa",
     "avatarAlt": "Avatar",
     "gradient": {
@@ -55,7 +55,7 @@
     ]
   },
   "stats": {
-    "imageSrc": "/stats-image.svg",
+    "imageSrc": "/stats-image.png",
     "imageAlt": "Johncarlo Ababa",
     "gradient": {
       "colorLeft": "#00C2FF",
