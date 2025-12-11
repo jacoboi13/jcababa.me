@@ -84,9 +84,9 @@ export default {
             height: "0",
           },
         },
-        marquee: {
+        carousel: {
           "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(-66.666%)" },
         },
         ticker: {
           "0%": { transform: "translateX(0%)" },
@@ -96,9 +96,9 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "marquee-mobile": "marquee 40s linear infinite",
-        "marquee-tablet": "marquee 50s linear infinite",
-        "marquee-desktop": "marquee 70s linear infinite",
+        "carousel-mobile": "carousel 25s linear infinite",
+        "carousel-tablet": "carousel 35s linear infinite",
+        "carousel-desktop": "carousel 50s linear infinite",
         ticker: "ticker 20s linear infinite",
       },
     },
