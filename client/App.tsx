@@ -1,40 +1,48 @@
-import "./global.css";
+import "./global.css"
 
-import { Toaster } from "@/components/ui/toaster";
-import { createRoot } from "react-dom/client";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
-import Header from "./components/Header";
+import { Toaster } from "@/components/ui/toaster"
+import { createRoot } from "react-dom/client"
+import { Toaster as Sonner } from "@/components/ui/sonner"
+import { TooltipProvider } from "@/components/ui/tooltip"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Index from "./pages/Index"
+import NotFound from "./pages/NotFound"
+import Header from "./components/Header"
+import { usePageConfig } from "./hooks/usePageConfig"
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient()
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const App = () => {
+  const { config, isLoading } = usePageConfig()
 
-const rootElement = document.getElementById("root")!;
+  if (!isLoading) {
+    document.title = config.title || "JC | Email Designer"
+  }
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  )
+}
+
+const rootElement = document.getElementById("root")!
 
 // Use a module-scoped variable to ensure createRoot is only called once
 // even if the module is re-executed during HMR
 if (!(window as any).__reactRoot) {
-  (window as any).__reactRoot = createRoot(rootElement);
+  ;(window as any).__reactRoot = createRoot(rootElement)
 }
-
-(window as any).__reactRoot.render(<App />);
+;(window as any).__reactRoot.render(<App />)
