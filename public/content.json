@@ -24,7 +24,7 @@
     },
     "buttons": {
       "primary": "View Resume & Portfolio",
-      "primaryLink": "https://jcababa.me",
+      "primaryLink": "https://www.jcababa.me/JC_Ababa_Graphic_Designer_Resume_Portfolio_2025.pdf",
       "secondary": "About Me"
     },
     "trustBadge": "Trusted by 30+ eCommerce Brands",
@@ -44,14 +44,14 @@
   },
   "logoCarousel": {
     "logos": [
-      { "src": "/logo-1.svg", "alt": "Logo 1" },
-      { "src": "/logo-2.svg", "alt": "Logo 2" },
-      { "src": "/logo-3.svg", "alt": "Logo 3" },
-      { "src": "/logo-4.svg", "alt": "Logo 4" },
-      { "src": "/logo-5.svg", "alt": "Logo 5" },
-      { "src": "/logo-6.svg", "alt": "Logo 6" },
-      { "src": "/logo-7.svg", "alt": "Logo 7" },
-      { "src": "/logo-8.svg", "alt": "Logo 8" }
+      { "src": "/logo-1.png", "alt": "Logo 1" },
+      { "src": "/logo-2.png", "alt": "Logo 2" },
+      { "src": "/logo-3.png", "alt": "Logo 3" },
+      { "src": "/logo-4.png", "alt": "Logo 4" },
+      { "src": "/logo-5.png", "alt": "Logo 5" },
+      { "src": "/logo-6.png", "alt": "Logo 6" },
+      { "src": "/logo-7.png", "alt": "Logo 7" },
+      { "src": "/logo-8.png", "alt": "Logo 8" }
     ]
   },
   "stats": {
@@ -79,7 +79,7 @@
     },
     "buttons": {
       "primary": "View Resume & Portfolio",
-      "primaryLink": "https://jcababa.me",
+      "primaryLink": "https://www.jcababa.me/JC_Ababa_Graphic_Designer_Resume_Portfolio_2025.pdf",
       "secondary": "Projects"
     }
   },
@@ -113,7 +113,7 @@
   "cta": {
     "buttons": {
       "primary": "View Resume & Portfolio",
-      "primaryLink": "https://jcababa.me",
+      "primaryLink": "https://www.jcababa.me/JC_Ababa_Graphic_Designer_Resume_Portfolio_2025.pdf",
       "secondary": "Brands Worked with"
     }
   },
