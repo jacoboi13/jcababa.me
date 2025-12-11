@@ -1,14 +1,14 @@
-import { useContent } from "@/hooks/useContent";
+import { useContent } from "@/hooks/useContent"
 
 export default function LogoCarousel() {
-  const { content } = useContent();
+  const { content } = useContent()
 
-  if (!content) return null;
+  if (!content) return null
 
   return (
     <section className="w-full bg-white shadow-sm py-8 md:py-10 lg:py-12">
       <div className="overflow-hidden">
-        <div className="flex animate-marquee-mobile md:animate-marquee whitespace-nowrap min-h-[60px] items-center">
+        <div className="flex animate-marquee-mobile md:animate-marquee-tablet lg:animate-marquee-desktop whitespace-nowrap min-h-[60px] items-center">
           {/* First set of logos */}
           {content.logoCarousel.logos.map((logo, index) => (
             <div
@@ -16,7 +16,7 @@ export default function LogoCarousel() {
               className="inline-flex items-center justify-center mx-6 md:mx-12 lg:mx-16 flex-shrink-0"
             >
               <img
-                src={logo.src}
+                src={logo.src || "/placeholder.svg"}
                 alt={logo.alt}
                 className="object-contain h-[36px] md:h-[40px] lg:h-[44px]"
               />
@@ -29,7 +29,7 @@ export default function LogoCarousel() {
               className="inline-flex items-center justify-center mx-6 md:mx-12 lg:mx-16 flex-shrink-0"
             >
               <img
-                src={logo.src}
+                src={logo.src || "/placeholder.svg"}
                 alt={logo.alt}
                 className="object-contain h-[36px] md:h-[40px] lg:h-[44px]"
               />
@@ -38,5 +38,5 @@ export default function LogoCarousel() {
         </div>
       </div>
     </section>
-  );
+  )
 }

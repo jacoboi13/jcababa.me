@@ -96,8 +96,9 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        marquee: "marquee 60s linear infinite",
-        "marquee-mobile": "marquee 60s linear infinite",
+        "marquee-mobile": "marquee 40s linear infinite",
+        "marquee-tablet": "marquee 50s linear infinite",
+        "marquee-desktop": "marquee 70s linear infinite",
         ticker: "ticker 20s linear infinite",
       },
     },
