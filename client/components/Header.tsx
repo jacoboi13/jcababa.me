@@ -40,7 +40,7 @@ export default function Header() {
           rel="noopener noreferrer"
         >
           <Button
-            variant="filled"
+            variant="blued"
             className="rounded-2xl px-6 py-2 md:px-8 md:py-2.5 lg:px-10 lg:py-3 font-inter font-semibold text-sm md:text-base lg:text-lg h-auto"
           >
             {content.header.ctaButton}
