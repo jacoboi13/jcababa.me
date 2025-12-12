@@ -1,19 +1,27 @@
-import { Linkedin, MessageCircle, Dribbble } from "lucide-react";
+import { Linkedin, MessageCircle } from "lucide-react";
 import { useContent } from "@/hooks/useContent";
 
 export default function Footer() {
   const { content } = useContent();
-
+  
   if (!content) return null;
-
+  
   const getSocialIcon = (platform: string) => {
     switch (platform) {
       case 'linkedin':
         return <Linkedin className="w-5 h-5" />;
       case 'whatsapp':
         return <MessageCircle className="w-5 h-5" />;
-      case 'dribbble':
-        return <Dribbble className="w-5 h-5" />;
+      case 'onlinejobs':
+        return (
+          <svg
+            className="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.5 14.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5S13 12.62 13 14s-1.12 2.5-2.5 2.5zm0-7C9.12 9.5 8 8.38 8 7s1.12-2.5 2.5-2.5S13 5.62 13 7s-1.12 2.5-2.5 2.5zm5.5 7h-2v-9h2v9z"/>
+          </svg>
+        );
       case 'discord':
         return (
           <svg
@@ -28,7 +36,7 @@ export default function Footer() {
         return null;
     }
   };
-
+  
   return (
     <footer className="w-full mt-4 pt-[81px] pb-8">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -38,11 +46,11 @@ export default function Footer() {
             {content.footer.poweredByText}
             <span className="font-semibold">{content.footer.poweredByName}</span>
           </p>
-
+          
           {/* Social Icons */}
           <div className="flex items-center gap-4">
             {content.footer.socialLinks?.map((social) => (
-              <a
+              
                 key={social.platform}
                 href={social.href}
                 target="_blank"

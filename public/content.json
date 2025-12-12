@@ -123,14 +123,14 @@
     "socialLabels": {
       "linkedin": "LinkedIn",
       "whatsapp": "WhatsApp",
-      "dribbble": "Dribbble",
+      "onlinejobs": "OnlineJobs.ph",
       "discord": "Discord"
     },
     "socialLinks": [
-      { "platform": "linkedin", "href": "https://jcababa.me" },
-      { "platform": "whatsapp", "href": "https://jcababa.me" },
-      { "platform": "dribbble", "href": "https://jcababa.me" },
-      { "platform": "discord", "href": "https://jcababa.me" }
+      { "platform": "linkedin", "href": "https://www.linkedin.com/in/jcababame" },
+      { "platform": "whatsapp", "href": "https://wa.me/639397811597" },
+      { "platform": "onlinejobs", "href": "https://www.onlinejobs.ph/jobseekers/info/3775723" },
+      { "platform": "discord", "href": "https://discord.com/users/jcababasn0w506" }
     ]
   }
 }
