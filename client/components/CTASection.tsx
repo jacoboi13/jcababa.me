@@ -14,9 +14,9 @@ export default function CTASection() {
   if (!content) return null;
 
   return (
-    <section className="w-full bg-white -mt-[3px] lg:-mt-0.5 relative overflow-hidden pt-[7px] pb-10 md:pb-12 lg:pt-0 lg:pb-0">
+    <section className="w-full bg-white -mt-[3px] relative overflow-hidden pt-10 pb-12">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-[10px] sm:gap-3 py-0">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start gap-[10px] sm:gap-3 py-6 md:py-8 lg:py-10">
           <a
             href={content.cta.buttons.primaryLink}
             target="_blank"
