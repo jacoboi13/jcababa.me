@@ -27,7 +27,7 @@
       "primaryLink": "https://www.jcababa.me/JC_Ababa_EmailGraphicDesigner_Resume_&_Portfolio_2026.pdf",
       "secondary": "About Me"
     },
-    "trustBadge": "Trusted by 30+ eCommerce Brands",
+    "trustBadge": "Trusted by 30+ eCommerce Clients",
     "imageSrc": "/hero-image.png",
     "imageAlt": "Johncarlo Ababa",
     "avatarAlt": "Avatar",
@@ -69,7 +69,7 @@
     "skills": [
       { "name": "Klaviyo", "percentage": 75 },
       { "name": "Figma", "percentage": 85 },
-      { "name": "Canva", "percentage": 90 },
+      { "name": "Canva", "percentage": 60 },
       { "name": "Photoshop", "percentage": 80 }
     ],
     "awards": {
@@ -93,19 +93,19 @@
       {
         "title": "Email Campaign Design",
         "description": "Modern email templates for eCommerce",
-        "bgImage": "/project-1.svg",
+        "bgImage": "/project-1.png",
         "link": "https://jcababa.me"
       },
       {
         "title": "Brand Newsletter",
         "description": "Strategic visual content for conversion",
-        "bgImage": "/project-2.svg",
+        "bgImage": "/project-2.png",
         "link": "https://jcababa.me"
       },
       {
         "title": "Marketing Automation",
         "description": "Clean, responsive email layouts",
-        "bgImage": "/project-3.svg",
+        "bgImage": "/project-3.png",
         "link": "https://jcababa.me"
       }
     ]
