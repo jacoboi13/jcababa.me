@@ -40,7 +40,7 @@ export default function Header() {
             <span className="font-normal">{content.header.brandName.normal}</span>
           </div>
         </div>
-        
+        <a
           href={content.header.ctaButtonLink}
           target="_blank"
           rel="noopener noreferrer"

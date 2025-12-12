@@ -19,7 +19,17 @@ export default function Footer() {
             fill="currentColor"
             viewBox="0 0 24 24"
           >
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1.5 14.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5S13 12.62 13 14s-1.12 2.5-2.5 2.5zm0-7C9.12 9.5 8 8.38 8 7s1.12-2.5 2.5-2.5S13 5.62 13 7s-1.12 2.5-2.5 2.5zm5.5 7h-2v-9h2v9z"/>
+            <text
+              x="50%"
+              y="50%"
+              dominantBaseline="middle"
+              textAnchor="middle"
+              fontSize="12"
+              fontWeight="bold"
+              fontFamily="Arial, sans-serif"
+            >
+              OJ
+            </text>
           </svg>
         );
       case 'discord':
