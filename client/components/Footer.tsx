@@ -50,7 +50,7 @@ export default function Footer() {
           {/* Social Icons */}
           <div className="flex items-center gap-4">
             {content.footer.socialLinks?.map((social) => (
-              
+              <a
                 key={social.platform}
                 href={social.href}
                 target="_blank"
