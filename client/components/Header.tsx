@@ -5,18 +5,21 @@ import { useContent } from "@/hooks/useContent";
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const { content } = useContent();
-
+  
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
+  
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  
   if (!content) return null;
-
+  
   return (
     <header
       className="sticky top-0 z-50 transition-all duration-300 backdrop-blur-sm"
@@ -26,15 +29,18 @@ export default function Header() {
           <img
             src={content.header.logoSrc}
             alt={content.header.logoAlt}
-            className="w-[54px] h-[54px]"
+            className="w-[54px] h-[54px] cursor-pointer transition-all duration-300 hover:scale-105 hover:drop-shadow-lg"
+            onClick={scrollToTop}
           />
-          <div className="font-poppins text-[19px]">
+          <div 
+            className="font-poppins text-[19px] cursor-pointer"
+            onClick={scrollToTop}
+          >
             <span className="font-semibold">{content.header.brandName.bold}</span>
             <span className="font-normal">{content.header.brandName.normal}</span>
           </div>
         </div>
-
-        <a
+        
           href={content.header.ctaButtonLink}
           target="_blank"
           rel="noopener noreferrer"
