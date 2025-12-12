@@ -15,9 +15,9 @@ export default function ProjectCards() {
   }));
 
   return (
-    <section className="w-full -mt-px mb-0 pt-0 lg:pt-10 pb-0 lg:pb-[19px]">
+    <section className="w-full relative overflow-visible pt-0 lg:pt-10 pb-0">
       {/* Mobile/Tablet: Horizontal Scroll */}
-      <div className="lg:hidden relative">
+      <div className="lg:hidden relative overflow-visible">
         {/* Scroll Me Indicator */}
         <div className="absolute top-0 right-6 z-20 animate-bounce">
           <div className="bg-black text-white text-xs font-inter font-semibold px-3 py-1.5 rounded-full shadow-lg">
@@ -25,15 +25,16 @@ export default function ProjectCards() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto pl-6 pt-4 pb-4 -mb-px lg:mb-0">
+        <div className="max-w-7xl mx-auto pl-6 pt-4 pb-4 overflow-visible">
           <div
             className="flex overflow-x-auto gap-4 pr-6 pb-3 snap-x snap-mandatory custom-scrollbar overflow-y-visible"
-            style={{
-              WebkitOverflowScrolling: 'touch',
-            }}
+            style={{ WebkitOverflowScrolling: "touch" }}
           >
             {cards.map((card, index) => (
-              <div key={card.id} className={`flex-shrink-0 w-[280px] md:w-[340px] snap-start ${index === 0 ? '' : ''}`}>
+              <div
+                key={card.id}
+                className="flex-shrink-0 w-[280px] md:w-[340px] snap-start"
+              >
                 <a
                   href={card.link}
                   target="_blank"
@@ -41,20 +42,22 @@ export default function ProjectCards() {
                   className="block"
                 >
                   <Card
-                    className="relative overflow-hidden border border-gray-200 h-[380px] md:h-[420px] cursor-pointer group"
+                    className="
+                      relative overflow-hidden rounded-2xl
+                      border border-gray-200
+                      h-[390px] md:h-[430px]        /* +10px here */
+                      cursor-pointer group
+                    "
                   >
                     {/* Background Image */}
                     <div
                       className="absolute inset-0 bg-cover bg-center"
-                      style={{
-                        backgroundImage: `url(${card.bgImage})`,
-                      }}
+                      style={{ backgroundImage: `url(${card.bgImage})` }}
                     >
-                      {/* Gradient Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                     </div>
 
-                    {/* Figma Icon - Top Left */}
+                    {/* Figma Icon */}
                     <div className="absolute top-6 left-6 z-10">
                       <div className="w-12 h-12 bg-white/90 backdrop-blur-sm rounded-lg shadow-sm flex items-center justify-center">
                         <img
@@ -65,7 +68,7 @@ export default function ProjectCards() {
                       </div>
                     </div>
 
-                    {/* Text Content - Always visible on mobile/tablet */}
+                    {/* Text */}
                     <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
                       <h3 className="font-poppins text-xl font-bold text-white mb-2">
                         {card.title}
@@ -82,9 +85,9 @@ export default function ProjectCards() {
         </div>
       </div>
 
-      {/* Desktop: Grid Layout */}
-      <div className="hidden lg:block max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-3 gap-8">
+      {/* Desktop Grid */}
+      <div className="hidden lg:block max-w-7xl mx-auto px-6 lg:px-8 overflow-visible">
+        <div className="grid grid-cols-3 gap-8 overflow-visible">
           {cards.map((card) => (
             <a
               key={card.id}
@@ -94,20 +97,24 @@ export default function ProjectCards() {
               className="block"
             >
               <Card
-                className="relative overflow-hidden border border-gray-200 min-h-[480px] transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer group"
+                className="
+                  relative overflow-visible rounded-2xl
+                  border border-gray-200
+                  min-h-[490px]                 /* +10px here */
+                  transition-all duration-300
+                  hover:scale-105 hover:shadow-xl
+                  cursor-pointer group
+                "
               >
-                {/* Background Image */}
-                <div 
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-                  style={{ 
-                    backgroundImage: `url(${card.bgImage})`,
-                  }}
+                {/* BG Image */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110 rounded-2xl"
+                  style={{ backgroundImage: `url(${card.bgImage})` }}
                 >
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
                 </div>
 
-                {/* Figma Icon - Top Left */}
+                {/* Figma Icon */}
                 <div className="absolute top-6 left-6 z-10">
                   <div className="w-12 h-12 bg-white/90 backdrop-blur-sm rounded-lg shadow-sm flex items-center justify-center">
                     <img
@@ -118,8 +125,8 @@ export default function ProjectCards() {
                   </div>
                 </div>
 
-                {/* Text Content - Hidden by default, shows on hover */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 z-10 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                {/* Text (Hover Reveal) */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 z-10 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                   <h3 className="font-poppins text-xl font-bold text-white mb-2">
                     {card.title}
                   </h3>
