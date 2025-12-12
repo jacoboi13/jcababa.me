@@ -94,7 +94,7 @@ export default function ProjectCards() {
               className="block"
             >
               <Card
-                className="relative overflow-hidden border border-gray-200 min-h-[480px] transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer group"
+                className="relative overflow-visible border border-gray-200 min-h-[480px] transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer group"
               >
                 {/* Background Image */}
                 <div 
