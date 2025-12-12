@@ -68,8 +68,8 @@
     ],
     "skills": [
       { "name": "Klaviyo", "percentage": 75 },
-      { "name": "Figma", "percentage": 85 },
-      { "name": "Canva", "percentage": 60 },
+      { "name": "Figma", "percentage": 90 },
+      { "name": "Canva", "percentage": 65 },
       { "name": "Photoshop", "percentage": 80 }
     ],
     "awards": {
@@ -91,19 +91,19 @@
     "iconAlt": "Figma",
     "cards": [
       {
-        "title": "Email Campaign Design",
-        "description": "Modern email templates for eCommerce",
+        "title": "Best Email Design",
+        "description": "Not only elegant, but strategic",
         "bgImage": "/project-1.png",
-        "link": "https://jcababa.me"
+        "link": "https://www.figma.com/design/JjKcyLkBtAXeqOqzmupD41/Best-Designs---JC-Ababa?node-id=0-1&p=f&t=pbbkIK1db8pjQbxB-0"
       },
       {
-        "title": "Brand Newsletter",
+        "title": "Email Campaign Design",
         "description": "Strategic visual content for conversion",
         "bgImage": "/project-2.png",
-        "link": "https://jcababa.me"
+        "link": "https://www.figma.com/design/PL7OEegl4rrV4x8CP6Y22Q/JC-Ababa---Email-Designs--Portfolio-?node-id=0-1&p=f&t=a8KsRyq3SggamNmH-0"
       },
       {
-        "title": "Marketing Automation",
+        "title": "Agency Email Campaigns",
         "description": "Clean, responsive email layouts",
         "bgImage": "/project-3.png",
         "link": "https://jcababa.me"
@@ -114,12 +114,12 @@
     "buttons": {
       "primary": "View Resume & Portfolio",
       "primaryLink": "https://www.jcababa.me/JC_Ababa_EmailGraphicDesigner_Resume_&_Portfolio_2026.pdf",
-      "secondary": "Brands Worked with"
+      "secondary": "Brands"
     }
   },
   "footer": {
     "poweredByText": "Powered by: ",
-    "poweredByName": "Sn0wRa1n's Algorithm",
+    "poweredByName": "Sn0wRa1n Algorithm",
     "socialLabels": {
       "linkedin": "LinkedIn",
       "whatsapp": "WhatsApp",
