@@ -24,9 +24,9 @@ export default function Footer() {
               y="50%"
               dominantBaseline="middle"
               textAnchor="middle"
-              fontSize="12"
+              fontSize="16"
               fontWeight="bold"
-              fontFamily="Arial, sans-serif"
+              fontFamily="Poppins, sans-serif"
             >
               OJ
             </text>
